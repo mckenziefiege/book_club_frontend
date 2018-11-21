@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 class BookCard extends Component {
 
   render() {
-    console.log(this.props)
     return (
       <div>
       <p>inside book card</p>
