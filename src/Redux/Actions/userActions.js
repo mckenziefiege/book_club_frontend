@@ -1,17 +1,19 @@
-// const handleLogout = () => {(type: 'HANDLE_LOGOUT'), payload: {}}
-import { loginFetch } from './adapter.js'
+import { loginFetch, signUpFetch} from './adapter.js'
 
 export const handleLogin = (user) => ({type: 'HANDLE_LOGIN', payload: {user}})
+export const logoutUser = () => ({type: 'HANDLE_LOGOUT', payload: {}})
 
 export const loginAndFetch = (e) => {
-  console.log('hellllllo', e)
   return (dispatch) => {
     return loginFetch(e)
-    .then(json => dispatch(handleLogin(json.user)))
+    .then(json => dispatch(handleLogin(json.user)) && localStorage.setItem("token", json.jwt))
   }
 }
 
-
-//         localStorage.setItem("token", resp.jwt)
-//         this.setState({
-//          auth: {currentUser: resp.user}
+export const signUpAndFetch = (e) => {
+  console.log('inside signup and fetch')
+  return (dispatch) => {
+    return signUpFetch(e)
+    .then(json => dispatch(handleLogin(json.user)) && localStorage.setItem("token", json.jwt))
+  }
+}

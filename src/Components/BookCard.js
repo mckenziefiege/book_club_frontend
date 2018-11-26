@@ -4,9 +4,14 @@ import { connect } from 'react-redux'
 class BookCard extends Component {
 
   render() {
+    console.log(this.props.bookObj.volumeInfo.imageLinks)
     return (
       <div>
-      <p>inside book card</p>
+      <img alt={this.props.bookObj.volumeInfo.title} src={this.props.bookObj.volumeInfo.imageLinks === undefined ? null : this.props.bookObj.volumeInfo.imageLinks.thumbnail}/>
+      <p> {this.props.bookObj.volumeInfo.title} </p>
+      <p> {this.props.bookObj.volumeInfo.authors} </p>
+      <p> {this.props.bookObj.volumeInfo.description} </p>
+      <button> ADD </button>
       </div>
     )
   }

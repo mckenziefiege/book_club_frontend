@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { loginAndFetch } from '../Redux/Actions/userActions.js'
+import { Redirect, Link } from 'react-router-dom'
 
 class Login extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log('hitting handle submit')
     this.props.loginAndFetch(e)
   }
 
@@ -18,6 +18,7 @@ class Login extends Component {
       <label>Username <input type="text" name="username"/></label><br />
       <label>Password <input type="text" name="password"/></label><br />
       <input type="Submit" placeholder="Username"/>
+      {localStorage.getItem('token') && <Redirect to='/userfeed' />}
       </form>
       </div>
     )

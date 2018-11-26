@@ -4,9 +4,8 @@ class EventCard extends Component {
 
   render() {
     return (
-      <div>
-      <p>inside eventCard</p>
-      </div>
+    <div>
+    </div>
     )
 
   }

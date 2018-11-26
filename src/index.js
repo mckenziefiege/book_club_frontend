@@ -9,6 +9,7 @@ import { bookReducer } from './Redux/Reducers/bookReducer'
 import { eventReducer } from './Redux/Reducers/eventReducer'
 import { userReducer } from './Redux/Reducers/userReducer'
 import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom';
 
 const rootReducer = combineReducers({
   books: bookReducer,
@@ -19,9 +20,11 @@ const rootReducer = combineReducers({
 const store = createStore(rootReducer, compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
 
 ReactDOM.render(
+  <BrowserRouter>
   <Provider store={store}>
   <App />
   </Provider>
+  </BrowserRouter>
   , document.getElementById('root'));
 
 
