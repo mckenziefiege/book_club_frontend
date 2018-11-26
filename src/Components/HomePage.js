@@ -6,7 +6,7 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-      <Link to="/login"><p>Login</p></Link>
+      <Link to="/login"><button> Login </button></Link>
       <Link to="/signup"><p>Sign Up</p></Link>
       </div>
     )

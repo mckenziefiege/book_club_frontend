@@ -20,12 +20,6 @@ const rootReducer = combineReducers({
 const store = createStore(rootReducer, compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
 
 ReactDOM.render(
-  <BrowserRouter>
-  <Provider store={store}>
-  <App />
-  </Provider>
-  </BrowserRouter>
-  , document.getElementById('root'));
-
+  <BrowserRouter><Provider store={store}><App /></Provider></BrowserRouter>, document.getElementById('root'));
 
 serviceWorker.unregister();

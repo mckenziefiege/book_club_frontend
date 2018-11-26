@@ -15,7 +15,6 @@ export const loginFetch = (e) => {
 }
 
 export const signUpFetch = (e) => {
-  console.log('hitting signup fetch')
   return fetch("http://localhost:3000/users", {
       method: "POST",
       headers: {
@@ -33,4 +32,13 @@ export const signUpFetch = (e) => {
       }
       })
     }).then(resp => resp.json())
+}
+
+export const fetchingCurrentUser = (token) => {
+  return fetch('http://localhost:3000/profile', {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+  .then(resp => resp.json())
 }

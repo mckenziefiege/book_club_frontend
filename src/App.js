@@ -1,23 +1,33 @@
 import React, { Component } from 'react';
 import './App.css';
+import { Route, Switch, withRouter } from 'react-router-dom'
 import NavBar from './Components/NavBar.js'
 import SignUp from './Components/SignUp.js'
 import Login from './Components/Login.js'
 import HomePage from './Components/HomePage.js'
-import EventsContainer from './Components/EventsContainer.js'
-import EventCard from './Components/EventCard.js'
-import BooksContainer from './Components/BooksContainer.js'
-import Logout from './Components/Logout.js'
-import UserBooks from './Components/UserBooks.js'
 import UserFeed from './Components/UserFeed.js'
-import { Route, Switch, withRouter } from 'react-router-dom'
-
+import { connect } from 'react-redux'
+import { setAndFetchUser } from './Redux/Actions/userActions.js'
 
 class App extends Component {
 
-
   componentDidMount () {
-    fetch('')
+    const token = localStorage.getItem('token')
+    if (token) {
+      this.props.setAndFetchUser(token)
+    }
+  }
+
+  renderBooksRead () {
+    return 'books read'
+  }
+
+  renderBooksToRead () {
+    return 'books to read'
+  }
+
+  renderYourEvents () {
+    return 'your events'
   }
 
   render() {
@@ -26,14 +36,22 @@ class App extends Component {
         <NavBar />
         <Switch>
           <Route path="/login" component={Login}/>
-          <Route path="/signup" component={SignUp}/>
-          <Route path="/home" component={HomePage}/>
-          <Route path="/userfeed" component={UserFeed}/>
-          <Route path="/" component={HomePage}/>
+          <Route path="/signup" component={SignUp} />
+          <Route path="/profile" component={UserFeed} />
+          <Route path="/read" render={this.renderBooksRead} />
+          <Route path="/books-to-read" render={this.renderBooksToRead} />
+          <Route path="/your-events" render={this.renderYourEvents} />
+          <Route path="/" component={HomePage} />
         </Switch>
       </div>
     );
   }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setAndFetchUser: () => dispatch(setAndFetchUser())
+  }
+}
+
+export default withRouter(connect(null, mapDispatchToProps)(App));

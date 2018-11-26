@@ -6,7 +6,6 @@ class SignUp extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log('hitting handle submit')
     this.props.signUpAndFetch(e)
   }
 
@@ -30,7 +29,7 @@ class SignUp extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {user: state.user.auth.currentUser}
+  return {user: state.user.auth.currentUser.user}
 }
 
 const mapDispatchToProps = (dispatch) => {

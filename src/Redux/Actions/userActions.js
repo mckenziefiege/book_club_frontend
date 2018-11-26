@@ -1,7 +1,8 @@
-import { loginFetch, signUpFetch} from './adapter.js'
+import { loginFetch, signUpFetch, fetchingCurrentUser} from './adapter.js'
 
 export const handleLogin = (user) => ({type: 'HANDLE_LOGIN', payload: {user}})
 export const logoutUser = () => ({type: 'HANDLE_LOGOUT', payload: {}})
+export const getCurrentUser = (user) => ({type: 'GET_CURRENT_USER', payload: {user}})
 
 export const loginAndFetch = (e) => {
   return (dispatch) => {
@@ -11,9 +12,15 @@ export const loginAndFetch = (e) => {
 }
 
 export const signUpAndFetch = (e) => {
-  console.log('inside signup and fetch')
   return (dispatch) => {
     return signUpFetch(e)
     .then(json => dispatch(handleLogin(json.user)) && localStorage.setItem("token", json.jwt))
+  }
+}
+
+export const setAndFetchUser = () => {
+  return (dispatch) => {
+    return fetchingCurrentUser()
+    .then(json => dispatch(getCurrentUser(json.user)))
   }
 }

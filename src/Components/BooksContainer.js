@@ -17,7 +17,6 @@ class BooksContainer extends Component {
 }
 
   render() {
-    console.log(this.state.books)
     let bookCards = this.state.books.map(book => <BookCard key={book.id} bookObj={book}/>)
     return (
       <div>
