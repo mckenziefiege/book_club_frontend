@@ -5,9 +5,31 @@ class BookCard extends Component {
 
   addBookToList = (e, bookObj) => {
     console.log(bookObj)
+    let options = {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}`},
+      body: JSON.stringify({
+        title: this.props.bookObj.volumeInfo.title,
+        author: this.props.bookObj.volumeInfo.authors[0],
+        description: this.props.bookObj.volumeInfo.description,
+        image:  this.props.bookObj.volumeInfo.imageLinks.thumbnail
+    })
+  }
+    fetch('http://localhost:3000/books', options)
+    .then(resp => resp.json())
+    .then(book => fetch('http://localhost:3000/user_books', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}`},
+      body: JSON.stringify({
+        book_id: book.id,
+        user_id: this.props.user.auth.currentUser.user.id
+      })
+    }))
+    .then(console.log)
   }
 
   render() {
+    console.log(this.props)
     return (
       <div>
       <img alt={this.props.bookObj.volumeInfo.title} src={this.props.bookObj.volumeInfo.imageLinks === undefined ? null : this.props.bookObj.volumeInfo.imageLinks.thumbnail}/>
@@ -21,7 +43,7 @@ class BookCard extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {books: state.books}
+  return {books: state.books, user: state.user}
 }
 
 export default connect(mapStateToProps)(BookCard)
