@@ -1,7 +1,8 @@
 const initialState = {
   auth: {
     currentUser: {}
-  }
+  },
+  books: []
 }
 
 export const userReducer = (state = initialState, action) => {

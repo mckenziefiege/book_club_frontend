@@ -16,6 +16,7 @@ class SearchBar extends Component {
   render() {
     return (
       <div>
+      <p>Search books by title:</p>
       <input onChange={this.changeHandler} value={this.state.searchTerm} type="text" name="searchTerm" /><button onClick={() => this.props.searchHandler(this.state.searchTerm)}>Search</button>
       </div>
     )

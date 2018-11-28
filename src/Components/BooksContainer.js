@@ -5,7 +5,8 @@ import BookCard from './BookCard.js'
 class BooksContainer extends Component {
 
   state = {
-    books: []
+    books: [],
+    userBooks: []
   }
 
   searchHandler = (search) => {

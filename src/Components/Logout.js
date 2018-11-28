@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { logoutUser } from '../Redux/Actions/userActions.js'
 import { withRouter } from "react-router-dom"
 
-
 class Logout extends Component {
 
   handleLogout = () => {

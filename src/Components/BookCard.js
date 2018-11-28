@@ -12,7 +12,7 @@ class BookCard extends Component {
         title: this.props.bookObj.volumeInfo.title,
         author: this.props.bookObj.volumeInfo.authors[0],
         description: this.props.bookObj.volumeInfo.description,
-        image:  this.props.bookObj.volumeInfo.imageLinks.thumbnail
+        image:  this.props.bookObj.volumeInfo.imageLinks.thumbnail,
     })
   }
     fetch('http://localhost:3000/books', options)
@@ -21,8 +21,9 @@ class BookCard extends Component {
       method: 'POST',
       headers: {'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}`},
       body: JSON.stringify({
+        status: "want to read",
         book_id: book.id,
-        user_id: this.props.user.auth.currentUser.user.id
+        user_id: this.props.user.auth.currentUser.user.id,
       })
     }))
     .then(console.log)

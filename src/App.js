@@ -6,6 +6,8 @@ import SignUp from './Components/SignUp.js'
 import Login from './Components/Login.js'
 import HomePage from './Components/HomePage.js'
 import UserFeed from './Components/UserFeed.js'
+import UserWantToRead from './Components/UserWantToRead.js'
+import UserRead from './Components/UserRead.js'
 import { connect } from 'react-redux'
 import { setAndFetchUser } from './Redux/Actions/userActions.js'
 
@@ -18,28 +20,17 @@ class App extends Component {
     }
   }
 
-  renderBooksRead () {
-    return 'books read'
-  }
-
-  renderBooksToRead () {
-    return 'books to read'
-  }
-
-  renderYourEvents () {
-    return 'your events'
-  }
-
   render() {
+      // let want_list = this.props.user.user !== undefined ? this.props.user.user.books.filter(book => book.status === "want to read") : null
     return (
       <div>
         <NavBar />
         <Switch>
           <Route path="/login" component={Login}/>
           <Route path="/signup" component={SignUp} />
-          <Route path="/profile" component={UserFeed} />
-          <Route path="/read" render={this.renderBooksRead} />
-          <Route path="/books-to-read" render={this.renderBooksToRead} />
+          <Route path="/userfeed" component={UserFeed} />
+          <Route path="/read" component={UserRead} />
+          <Route path="/books-to-read" component={UserWantToRead} />
           <Route path="/your-events" render={this.renderYourEvents} />
           <Route path="/" component={HomePage} />
         </Switch>
@@ -48,10 +39,16 @@ class App extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
   return {
-    setAndFetchUser: () => dispatch(setAndFetchUser())
+    user: state.user.auth.currentUser
   }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(App));
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setAndFetchUser: (token) => dispatch(setAndFetchUser(token))
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

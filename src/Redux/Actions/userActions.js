@@ -18,9 +18,9 @@ export const signUpAndFetch = (e) => {
   }
 }
 
-export const setAndFetchUser = () => {
+export const setAndFetchUser = (token) => {
   return (dispatch) => {
-    return fetchingCurrentUser()
+    return fetchingCurrentUser(token)
     .then(json => dispatch(getCurrentUser(json.user)))
   }
 }

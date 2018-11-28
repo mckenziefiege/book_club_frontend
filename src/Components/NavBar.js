@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 class NavBar extends Component {
 
   renderProfileButton = () => {
-    return <Link to='/profile'><li>Profile</li></Link>
+    return <Link to='/userfeed'><li>Profile</li></Link>
   }
 
   renderHomeButton = () => {
@@ -29,6 +29,7 @@ class NavBar extends Component {
     return (
       <div>
         <ul>
+        <h1 className="logo">Book Club</h1>
         {this.renderHomeButton()}
         {localStorage.getItem('token') && this.renderProfileButton()}
         {localStorage.getItem('token') ? this.renderLogoutButton() : this.renderLoginButton()}
@@ -36,9 +37,7 @@ class NavBar extends Component {
         </ul>
       </div>
     )
-
   }
-
 }
 
 export default NavBar

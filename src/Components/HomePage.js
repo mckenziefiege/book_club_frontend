@@ -5,9 +5,15 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div>
-      <Link to="/login"><button> Login </button></Link>
+      <div className="homepage">
+      <div className="welcomemessage">
+      <h1>Welcome!</h1>
+      <p>Join a community where you can attend book clubs in your area and keep track of what your reading!</p>
+      </div>
+      <div className="homepagebox">
+      <Link to="/login"><p> Login </p></Link>
       <Link to="/signup"><p>Sign Up</p></Link>
+      </div>
       </div>
     )
 
