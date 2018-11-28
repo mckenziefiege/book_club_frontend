@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import UserLinks from './UserLinks.js'
 import SearchEvents from './SearchEvents.js'
+import EventCard from './EventCard.js'
 
 class EventsContainer extends Component {
 
@@ -11,14 +12,22 @@ class EventsContainer extends Component {
   searchHandler = (search) => {
     fetch('http://localhost:3000/events')
     .then(resp => resp.json())
-    .then(console.log)
+    .then(clubs => {
+      let new_clubs = clubs.filter(club => club.zipcode === search)
+      this.setState({
+        events: new_clubs
+      })
+    })
   }
 
   render() {
+    console.log(this.state)
+    let clubCards = this.state.events.map(club => <EventCard clubObj={club} key={club.id}/>)
     return (
       <div>
       <UserLinks />
       <SearchEvents searchHandler={this.searchHandler}/>
+      {clubCards}
       </div>
     )
 
