@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import BooksContainer from './BooksContainer.js'
 import CurrentlyReading from './CurrentlyReading.js'
+import UserLinks from './UserLinks.js'
 import { Link } from 'react-router-dom'
 
 class UserFeed extends Component {
-  render() {
 
+  render() {
+    console.log(this.props)
     return (
       <div>
-      <BooksContainer />
-      <p>Logged in as: {this.props.user.user && this.props.user.user.first_name}</p>
-      <Link to='/read'><p>{"Books You've Read"}</p></Link>
-      <Link to='books-to-read'><p>{"Reading List"}</p></Link>
-      <Link to='your-events'><p>{"Your Events"}</p></Link>
-
+      <UserLinks />
       <div className="currentlyreading">
       <h2>Currently Reading</h2>
       <CurrentlyReading />
@@ -30,8 +26,6 @@ class UserFeed extends Component {
       <label>Host<input type="text" /><br /></label>
       <input type="submit"/><br />
       </form>
-
-
 
       </div>
     )

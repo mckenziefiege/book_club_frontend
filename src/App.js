@@ -6,8 +6,12 @@ import SignUp from './Components/SignUp.js'
 import Login from './Components/Login.js'
 import HomePage from './Components/HomePage.js'
 import UserFeed from './Components/UserFeed.js'
+import BooksContainer from './Components/BooksContainer.js'
+import EventsContainer from './Components/EventsContainer.js'
 import UserWantToRead from './Components/UserWantToRead.js'
 import UserRead from './Components/UserRead.js'
+import UserEventsContainer from './Components/UserEventsContainer.js'
+import ReviewContainer from './Components/ReviewContainer.js'
 import { connect } from 'react-redux'
 import { setAndFetchUser } from './Redux/Actions/userActions.js'
 
@@ -21,7 +25,6 @@ class App extends Component {
   }
 
   render() {
-      // let want_list = this.props.user.user !== undefined ? this.props.user.user.books.filter(book => book.status === "want to read") : null
     return (
       <div>
         <NavBar />
@@ -31,8 +34,12 @@ class App extends Component {
           <Route path="/userfeed" component={UserFeed} />
           <Route path="/read" component={UserRead} />
           <Route path="/books-to-read" component={UserWantToRead} />
-          <Route path="/your-events" render={this.renderYourEvents} />
+          <Route path="/your-events" component={UserEventsContainer} />
+          <Route path="/search-events" component={EventsContainer} />
+          <Route path='/search-books' component={BooksContainer} />
+          <Route path='/reviews' component={ReviewContainer} />
           <Route path="/" component={HomePage} />
+
         </Switch>
       </div>
     );
@@ -41,7 +48,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user.auth.currentUser
+    user: state.user.auth.currentUser.user
   }
 }
 

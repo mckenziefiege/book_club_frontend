@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css');
+
 ul {
   list-style-type: none;
    margin: 0;
@@ -25,14 +27,16 @@ ul {
  }
 
  .currentlyreading {
-   border-style: outset;
+
 
  }
 
- .userbookcard {
-  border-style: solid;
+ .userbookcard, .reviewcard {
+  border-width: 2px;
+  border-style: outset;
   margin: 20px;
   padding: 20px;
+  display: inline-block;
  }
 
  .loginform, .signupform, .homepagebox{
@@ -57,11 +61,12 @@ ul {
  }
 
  .welcomemessage {
+   padding-top: 50px;
    text-align: center;
  }
 
  .homepage {
-   background-image: url("https://images.unsplash.com/photo-1519682577862-22b62b24e493?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=703af368135e79bfcc9b902a748b75b4&auto=format&fit=crop&w=1350&q=80");
+   background-image: url("https://images.unsplash.com/photo-1531053270060-6643c8e70e8f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=47ef13d0aff49e542ff857078747bc04&auto=format&fit=crop&w=1267&q=80");
    background-position: center;
     background-repeat: no-repeat;
     height: 100%;
@@ -74,3 +79,218 @@ ul {
  body {
   background:rgba(255,255,255,0.5); /* applies a 50% transparent white background */
 }
+
+.profileimage {
+  border-radius: 50%;
+}
+
+.userlinks {
+  display: inline-block;
+  justify-content: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.container {
+  text-align: center;
+  border-style: outset;
+  border-width: 2px;
+
+}
+
+a,a:visited,a:hover,a:active{
+  -webkit-backface-visibility:hidden;
+          backface-visibility:hidden;
+	position:relative;
+  transition:0.5s color ease;
+	text-decoration:none;
+	color:#000000;
+}
+a:hover{
+	color:#000000;
+}
+a.before:before,a.after:after{
+  content: "";
+  transition:0.5s all ease;
+  -webkit-backface-visibility:hidden;
+          backface-visibility:hidden;
+  position:absolute;
+}
+a.before:before{
+  top:-0.25em;
+}
+a.after:after{
+  bottom:-0.25em;
+}
+a.before:before,a.after:after{
+  height:1px;
+  height:0.05rem;
+  width:0;
+  background:#000000;
+}
+a.first:after{
+  left:0;
+}
+a.second:after{
+  right:0;
+}
+
+a.before:hover:before,a.after:hover:after{
+  width:100%;
+}
+.square{
+  box-sizing:border-box;
+  margin-left:-0.4em;
+  position:relative;
+  font-size:2.5em;
+  overflow:hidden;
+}
+.square a{
+  position:static;
+  font-size:100%;
+  padding:0.2em 0.4em;
+}
+.square:before,.square:after{
+  content: "";
+  box-sizing:border-box;
+  transition:0.25s all ease;
+  -webkit-backface-visibility:hidden;
+          backface-visibility:hidden;
+  position:absolute;
+  width:5px;
+  width:0.35rem;
+  height:0;
+  background:#000000;
+}
+.square:before{
+  left:0;
+  bottom:-0.2em;
+}
+.square.individual:before{
+  transition-delay:0.6s;
+}
+.square:after{
+  right:0;
+  top:-0.2em;
+}
+.square.individual:after{
+  transition-delay:0.2s;
+}
+.square a:before{
+  left:0;
+  transition:0.25s all ease;
+}
+.square a:after{
+  right:0;
+  transition:0.25s all ease;
+}
+.square.individual a:after{
+  transition:0.25s all ease 0.4s;
+}
+.square:hover:before,.square:hover:after{
+  height:calc(100% + 0.4em);
+}
+.square:hover a:before,.square:hover a:after{
+  width:100%;
+}
+
+.search {
+  width: 100%;
+  position: relative
+}
+
+.searchTerm {
+  float: left;
+  width: 100%;
+  border: 3px solid #000000;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px;
+  outline: none;
+  color: #000000;
+}
+
+.searchTerm:focus{
+  color: #000000;
+}
+
+.searchButton {
+  position: absolute;
+  right: -50px;
+  width: 40px;
+  height: 36px;
+  border: 1px solid #000000;
+  background: #000000;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.wrap {
+  width: 30%;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.searchbar {
+  margin-bottom: 150px;
+}
+
+
+.searchbookcard {
+  border-width: 2px;
+  border-style: outset;
+  margin: 20px;
+  padding: 20px;
+  display: inline-block;
+  max-width: 50;
+}
+
+.searchbookimage {
+  float: left;
+  padding: 20px;
+}
+
+fieldset, label { margin: 0; padding: 0; }
+body{ margin: 20px; }
+h1 { font-size: 1.5em; margin: 10px; }
+
+/****** Style Star Rating Widget *****/
+
+.rating {
+  border: none;
+  float: left;
+}
+
+.rating > input { display: none; }
+.rating > label:before {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before {
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label {
+  color: #ddd;
+ float: right;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  }

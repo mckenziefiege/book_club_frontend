@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar.js'
 import BookCard from './BookCard.js'
+import UserLinks from './UserLinks.js'
 
 class BooksContainer extends Component {
 
@@ -21,6 +22,7 @@ class BooksContainer extends Component {
     let bookCards = this.state.books.map(book => <BookCard key={book.id} bookObj={book}/>)
     return (
       <div>
+      <UserLinks />
       <SearchBar searchHandler={this.searchHandler}/>
       {bookCards}
       </div>

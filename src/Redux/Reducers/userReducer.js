@@ -1,8 +1,7 @@
 const initialState = {
   auth: {
     currentUser: {}
-  },
-  books: []
+  }
 }
 
 export const userReducer = (state = initialState, action) => {
@@ -12,8 +11,7 @@ export const userReducer = (state = initialState, action) => {
     }
 
     case('HANDLE_LOGOUT'): {
-      return {...state, auth: {currentUser: action.payload}
-      }
+      return {...state, auth: {currentUser: {}} }
     }
 
     case('GET_CURRENT_USER'): {
