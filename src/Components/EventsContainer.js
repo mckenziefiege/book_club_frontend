@@ -21,18 +21,15 @@ class EventsContainer extends Component {
   }
 
   render() {
-    console.log(this.state)
     let clubCards = this.state.events.map(club => <EventCard clubObj={club} key={club.id}/>)
     return (
       <div>
-      <UserLinks />
-      <SearchEvents searchHandler={this.searchHandler}/>
-      {clubCards}
+        <UserLinks />
+        <SearchEvents searchHandler={this.searchHandler}/>
+        {clubCards}
       </div>
     )
-
   }
-
 }
 
 export default EventsContainer

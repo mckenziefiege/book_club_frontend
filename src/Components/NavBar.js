@@ -23,18 +23,18 @@ class NavBar extends Component {
   }
 
   renderProfileImage = () => {
-    return <li><img className="profileimage" height="50" src={this.props.user.user && this.props.user.user.image} alt="Avatar"/></li>
+    return <li><img className="profileimage" height="50" src={this.props.user && this.props.user.image} alt="Avatar"/></li>
   }
 
   render() {
     return (
       <div>
         <ul>
-        <Link to='/'><h1 className="logo">Book Club</h1></Link>
-        {localStorage.getItem('token') && this.renderProfileImage()}
-        {localStorage.getItem('token') && this.renderProfileButton()}
-        {localStorage.getItem('token') ? this.renderLogoutButton() : this.renderLoginButton()}
-        {!localStorage.getItem('token') && this.renderSignUpButton()}
+          <Link to='/'><h1 className="logo">Book Club</h1></Link>
+          {localStorage.getItem('token') && this.renderProfileImage()}
+          {localStorage.getItem('token') && this.renderProfileButton()}
+          {localStorage.getItem('token') ? this.renderLogoutButton() : this.renderLoginButton()}
+          {!localStorage.getItem('token') && this.renderSignUpButton()}
         </ul>
       </div>
     )
@@ -42,7 +42,7 @@ class NavBar extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {user: state.user.auth.currentUser}
+  return {user: state.user.auth.currentUser.user}
 }
 
 export default connect(mapStateToProps)(NavBar)

@@ -5,14 +5,13 @@ import EventCard from './EventCard.js'
 
 class UserEventsContainer extends Component {
 
-
   render() {
-    let clubCards = this.props.user.events ? this.props.user.events.map(club => <EventCard key={club.id} clubObj={club}/> ) : null
+    let clubCards = this.props.user && this.props.user.events.map(club => <EventCard key={club.id} clubObj={club}/> )
     return (
       <div>
-      <UserLinks />
-      <h2>Your Events!</h2>
-      {clubCards}
+        <UserLinks />
+        <h2>Your Events!</h2>
+        {clubCards}
       </div>
     )
   }

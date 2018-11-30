@@ -4,7 +4,6 @@ import BookCard from './BookCard.js'
 import UserLinks from './UserLinks.js'
 
 class BooksContainer extends Component {
-
   state = {
     books: [],
     userBooks: []
@@ -22,9 +21,9 @@ class BooksContainer extends Component {
     let bookCards = this.state.books.map(book => <BookCard key={book.id} bookObj={book}/>)
     return (
       <div>
-      <UserLinks />
-      <SearchBar searchHandler={this.searchHandler}/>
-      {bookCards}
+        <UserLinks />
+        <SearchBar searchHandler={this.searchHandler}/>
+        {bookCards}
       </div>
     )
 

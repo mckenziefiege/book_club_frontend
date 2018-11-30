@@ -14,12 +14,12 @@ class Login extends Component {
   renderLoginForm = () => {
     return (
     <div className="loginform">
-    <h2>Log in</h2>
-    <form onSubmit={this.handleSubmit}>
-    <input type="text" name="username" placeholder="username"/><br />
-    <input type="password" name="password" placeholder="password"/><br />
-    <input type="Submit" placeholder="Username"/>
-    </form>
+      <h2>Log in</h2>
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" name="username" placeholder="username"/><br />
+          <input type="password" name="password" placeholder="password"/><br />
+          <input type="Submit" placeholder="Username"/>
+        </form>
     </div> )
   }
 
@@ -33,7 +33,7 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {user: state.user.auth.currentUser}
+  return {user: state.user.auth.currentUser.user}
 }
 
 const mapDispatchToProps = (dispatch) => {

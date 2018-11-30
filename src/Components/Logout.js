@@ -14,7 +14,7 @@ class Logout extends Component {
   render() {
     return (
       <div>
-      <button onClick={this.handleLogout}>Logout</button>
+        <p onClick={this.handleLogout}>Logout</p>
       </div>
     )
   }
@@ -22,13 +22,13 @@ class Logout extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.auth
+    user: state.user.auth.currentUser.user
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    logoutUser: logoutUser
+    logoutUser: () => dispatch(logoutUser())
   }
 }
 

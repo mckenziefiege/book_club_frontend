@@ -24,9 +24,9 @@ class ReviewContainer extends Component {
     let reviewCards = this.state.reviews.map(review => <ReviewCard key={review.id} reviewObj={review}/>)
     return (
     <div>
-    <UserLinks />
-    <SearchReviews searchHandler={this.searchHandler}/>
-    {reviewCards}
+      <UserLinks />
+      <SearchReviews searchHandler={this.searchHandler}/>
+      {reviewCards}
     </div>
     )
   }

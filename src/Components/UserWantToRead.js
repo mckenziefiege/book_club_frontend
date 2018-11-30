@@ -2,46 +2,60 @@ import React, { Component } from 'react';
 import UserBookCard from './UserBookCard.js'
 import { connect } from 'react-redux'
 import UserLinks from './UserLinks.js'
+import { updateWantToRead } from '../Redux/Actions/userActions.js'
 
 class UserWantToRead extends Component {
   state = {
-    user_books: [],
     books: []
   }
 
   deleteBook = (obj) => {
-    let user_book = this.state.user_books.filter(user_book => user_book.book_id === obj.id)
-    let new_id = user_book[0].id
-    fetch(`http://localhost:3000/user_books/${new_id}`, {
-      method: "DELETE"
-    }).then(resp => resp.json()).then(resp => this.setState({user_books: resp.want_to_read}))
-    let new_books = this.state.books.filter(book => book.id !== obj.id)
+    let choosen_user_book = this.props.want_to_read.filter(user_book => user_book.book_id === obj.id)
+    let new_user_books = this.props.want_to_read.filter(user_book => user_book.id !== choosen_user_book.id)
+    let id = choosen_user_book[0].id
+      fetch(`http://localhost:3000/user_books/${id}`, {
+        method: "DELETE"})
+        .then(resp => resp.json())
+        .then(resp => this.props.updateWantToRead(new_user_books))
+        let new_books = this.state.books.filter(book => book.id !== obj.id)
+      this.setState({
+        books: new_books
+      })
+    }
+
+  componentDidMount () {
+    const ids = this.props.user && this.props.want_to_read.map(user_book => user_book.book_id)
+    let bookObjs = this.props.user && this.props.user.books.filter(book => ids.includes(book.id))
     this.setState({
-      books: new_books
+      books: bookObjs
     })
   }
 
-  componentDidMount () {
-    this.props.user.user !== undefined && this.setState({user_books: this.props.user.user.want_to_read})
-    let book_ids = this.props.user.user !== undefined ? this.props.user.user.want_to_read.map(user_book => user_book.book_id) : null
-    let bookObjs = this.props.user.user !== undefined ? this.props.user.user.books.filter(book => book_ids.includes(book.id)) : null
-    this.props.user.user !== undefined && this.setState({books: bookObjs})
-  }
-
   render() {
-    let bookCards = this.props.user.user !== undefined ? this.state.books.map(book => <UserBookCard bookObj={book} key={book.id} deleteBook={this.deleteBook}/>) : null
+    console.log(this.props)
+    let bookCards = this.state.books !== undefined && this.state.books.map(book => <UserBookCard bookObj={book} key={book.id} deleteBook={this.deleteBook}/>)
     return (
       <div>
-      <UserLinks />
-      <h2>{"Books To Read"}</h2>
+        <UserLinks />
         {bookCards}
       </div>
-    )
+      )
+    }
   }
-}
 
-const mapStateToProps = (state) => {
-  return {user: state.user.auth.currentUser}
-}
+  const mapStateToProps = (state) => {
+    return {
+      user: state.user.auth.currentUser.user,
+      read: state.user.books.read,
+      want_to_read: state.user.books.want_to_read,
+      currently_reading: state.user.books.currently_reading
+    }
+  }
 
-export default connect(mapStateToProps)(UserWantToRead)
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      updateWantToRead: (resp) => dispatch(updateWantToRead(resp))
+    }
+  }
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserWantToRead)

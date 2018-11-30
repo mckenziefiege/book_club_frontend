@@ -25,6 +25,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <NavBar />
@@ -39,7 +40,6 @@ class App extends Component {
           <Route path='/search-books' component={BooksContainer} />
           <Route path='/reviews' component={ReviewContainer} />
           <Route path="/" component={HomePage} />
-
         </Switch>
       </div>
     );
@@ -48,7 +48,10 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user.auth.currentUser.user
+    user: state.user.auth.currentUser.user,
+    read: state.user.books.read,
+    want_to_read: state.user.books.want_to_read,
+    currently_reading: state.user.books.currently_reading
   }
 }
 

@@ -5,14 +5,12 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 import thunk from 'redux-thunk'
-import { bookReducer } from './Redux/Reducers/bookReducer'
 import { eventReducer } from './Redux/Reducers/eventReducer'
 import { userReducer } from './Redux/Reducers/userReducer'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom';
 
 const rootReducer = combineReducers({
-  books: bookReducer,
   events: eventReducer,
   user: userReducer
 })
