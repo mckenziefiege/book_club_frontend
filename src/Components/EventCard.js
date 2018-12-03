@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { changeEvent } from '../Redux/Actions/userActions.js'
 
 class EventCard extends Component {
 
@@ -19,11 +20,12 @@ class EventCard extends Component {
   }
 
   render() {
+    console.log(this.props)
     let ids = this.props.user.user_events.map(user_event => user_event.event_id)
     return (
     <div className="searcheventcard">
       {ids.includes(this.props.clubObj.id) ? null : <button onClick={(e) => this.joinEvent(e, this.props.clubObj)}>Join Event!</button>}
-      <Link to='/'><p>{this.props.clubObj.name}</p></Link>
+      <Link to='/event-page'><p onClick={() => this.props.changeEvent(this.props.clubObj)}>{this.props.clubObj.name}</p></Link>
 
       <p>{this.props.clubObj.date}</p>
       <p>{this.props.clubObj.time}</p>
@@ -43,4 +45,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(EventCard)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changeEvent: (resp) => dispatch(changeEvent(resp))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventCard)

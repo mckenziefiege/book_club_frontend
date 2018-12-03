@@ -15,7 +15,7 @@ class UserFeed extends Component {
           address: e.target.address.value,
           city: e.target.city.value,
           state: e.target.state.value,
-          zip_code: e.target.zipcode.value,
+          zipcode: e.target.zipcode.value,
           date: e.target.date.value,
           time: e.target.time.value,
           description: e.target.description.value,

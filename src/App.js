@@ -14,6 +14,7 @@ import UserEventsContainer from './Components/UserEventsContainer.js'
 import ReviewContainer from './Components/ReviewContainer.js'
 import { connect } from 'react-redux'
 import { setAndFetchUser } from './Redux/Actions/userActions.js'
+import EventPage from './Components/EventPage.js'
 
 class App extends Component {
 
@@ -25,7 +26,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div>
         <NavBar />
@@ -39,6 +39,7 @@ class App extends Component {
           <Route path="/search-events" component={EventsContainer} />
           <Route path='/search-books' component={BooksContainer} />
           <Route path='/reviews' component={ReviewContainer} />
+          <Route path='/event-page' component={EventPage} />
           <Route path="/" component={HomePage} />
         </Switch>
       </div>

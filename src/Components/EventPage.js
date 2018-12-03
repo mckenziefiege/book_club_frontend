@@ -1,14 +1,31 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import UserLinks from './UserLinks.js'
 
 class EventPage extends Component {
 
   render () {
+    console.log(this.props)
+    let usernames = this.props.club.users && this.props.club.users.map(user => `${user.first_name} `)
     return (
       <div>
-        Inside individual Event Page
+      <UserLinks />
+      <h1>{this.props.club.name}</h1>
+      <p>date: {this.props.club.date}</p>
+      <p>time: {this.props.club.time}</p>
+      <p>{this.props.club.description}</p>
+      <p>address: {this.props.club.address}, {this.props.club.city}, {this.props.club.state}, {this.props.club.zipcode}</p>
+      <p>host: {this.props.club.host && this.props.club.host.first_name}</p>
+      <p>Attendees: {usernames}</p>
       </div>
     )
   }
 }
 
-export default EventPage
+const mapStateToProps = (state) => {
+  return {
+    club: state.user.club
+  }
+}
+
+export default connect(mapStateToProps)(EventPage)

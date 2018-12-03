@@ -7,6 +7,7 @@ export const updateCurrentlyReading = (book) => ({type: 'UPDATE_CURRENTLY_READIN
 export const updateWantToRead = (book) => ({type: 'UPDATE_WANT_TO_READ', payload: {book}})
 export const updateRead = (book) => ({type: 'UPDATE_READ', payload: {book}})
 export const addBookToWantToRead = (book) => ({type: 'ADD_BOOK_TO_WANT_TO_READ', payload: {book}})
+export const changeEvent = (club) => ({type: 'CHANGE_EVENT', payload: {club}})
 
 export const loginAndFetch = (e) => {
   return (dispatch) => {

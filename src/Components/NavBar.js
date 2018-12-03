@@ -6,12 +6,12 @@ import { connect } from 'react-redux'
 
 class NavBar extends Component {
 
-  renderProfileButton = () => {
-    return <Link to='/userfeed'><li>Profile</li></Link>
-  }
+  // renderProfileButton = () => {
+  //   return <Link to='/userfeed'><li>Profile</li></Link>
+  // }
 
   renderLogoutButton = () => {
-    return <li><Logout /></li>
+    return <Link to='/'><li><Logout /></li></Link>
   }
 
   renderLoginButton = () => {
@@ -23,7 +23,7 @@ class NavBar extends Component {
   }
 
   renderProfileImage = () => {
-    return <li><img className="profileimage" height="50" src={this.props.user && this.props.user.image} alt="Avatar"/></li>
+    return <Link to='/userfeed'><li><img className="profileimage" height="50" src={this.props.user && this.props.user.image} alt="Avatar"/></li></Link>
   }
 
   render() {
@@ -31,10 +31,9 @@ class NavBar extends Component {
       <div>
         <ul>
           <Link to='/'><h1 className="logo">Book Club</h1></Link>
-          {localStorage.getItem('token') && this.renderProfileImage()}
-          {localStorage.getItem('token') && this.renderProfileButton()}
-          {localStorage.getItem('token') ? this.renderLogoutButton() : this.renderLoginButton()}
-          {!localStorage.getItem('token') && this.renderSignUpButton()}
+          {this.props.user && this.renderProfileImage()}
+          {this.props.user ? this.renderLogoutButton() : this.renderLoginButton()}
+          {!this.props.user && this.renderSignUpButton()}
         </ul>
       </div>
     )

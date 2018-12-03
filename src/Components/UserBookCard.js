@@ -15,7 +15,6 @@ class UserBookCard extends Component {
   }
 
   handleReviewClicked = () => {
-    console.log(this.state)
     this.setState({
       reviewForm: !this.state.reviewForm
     })
@@ -23,7 +22,6 @@ class UserBookCard extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log(e.target.rating.value)
     let options = {
       method: 'POST',
       headers: {'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}`},
@@ -39,7 +37,6 @@ class UserBookCard extends Component {
 }
 
   changeCategory = () => {
-    console.log('change')
     this.setState({
       categoryForm: !this.state.categoryForm
     })
@@ -47,11 +44,7 @@ class UserBookCard extends Component {
 
   handleChangeCategory = (e, book) => {
     e.preventDefault()
-    console.log(e.target.category.value)
-
     let user_book = this.props.user.user_books.filter(user_book => user_book.book_id === book.id)
-    console.log(user_book)
-    console.log(user_book[0].id)
     fetch(`http://localhost:3000/user_books/${user_book[0].id}`, {
       method: "PATCH",
       headers: {
@@ -95,7 +88,7 @@ class UserBookCard extends Component {
 
       <div className="userbookcard">
         <img className="cardimage" onClick={this.handleClickedImage} alt={this.props.bookObj.title} src={this.props.bookObj.image}/>
-        <p>{this.props.bookObj.title}</p>
+        <h4>{this.props.bookObj.title}</h4>
         {this.state.clicked &&
           <div>
             <p>{this.props.bookObj.author}</p>

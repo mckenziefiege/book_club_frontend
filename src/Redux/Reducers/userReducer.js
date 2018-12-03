@@ -6,7 +6,8 @@ const initialState = {
     read: [],
     wantToRead: [],
     currentlyReading: []
-  }
+  },
+  club: {}
 }
 
 export const userReducer = (state = initialState, action) => {
@@ -36,10 +37,11 @@ export const userReducer = (state = initialState, action) => {
     }
 
     case('ADD_BOOK_TO_WANT_TO_READ'): {
-      console.log('in add book')
-      console.log('want to read', state.books.want_to_read)
-      console.log('payload', action.payload)
       return {...state, want_to_read: [...state.books.want_to_read, action.payload]}
+    }
+
+    case('CHANGE_EVENT'): {
+      return {...state, club: action.payload.club}
     }
 
     default:
