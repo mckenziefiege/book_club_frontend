@@ -13,7 +13,6 @@ class ReviewContainer extends Component {
     .then(resp => resp.json())
     .then(reviews => {
       let new_reviews = reviews.filter(review => review.book.title.toLowerCase().includes(search.toLowerCase()))
-      console.log(new_reviews)
       return this.setState({
         reviews: new_reviews
       })

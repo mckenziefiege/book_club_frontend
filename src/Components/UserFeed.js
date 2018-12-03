@@ -49,8 +49,8 @@ class UserFeed extends Component {
           <label>City<input type="text" name="city"/><br /></label>
           <label>State<input type="text" name="state"/><br /></label>
           <label>Zip Code<input type="text" name="zipcode"/><br /></label>
-          <label>Date<input type="text" name="date"/><br /></label>
-          <label>Time<input type="text" name="time"/><br /></label>
+          <label>Date<input type="text" name="date" placeholder="mm/dd/yyyy"/><br /></label>
+          <label>Time<input type="text" name="time" placeholder="-- : -- am/pm"/><br /></label>
           <label>Description<input type="text" name="description"/><br /></label>
           <input type="hidden" name="host"/><br />
           <input className="button" type="submit"/><br />

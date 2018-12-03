@@ -28,7 +28,7 @@ class NavBar extends Component {
 
   render() {
     return (
-      <div>
+      <div className="navBar">
         <ul>
           <Link to='/'><h1 className="logo">Book Club</h1></Link>
           {this.props.user && this.renderProfileImage()}

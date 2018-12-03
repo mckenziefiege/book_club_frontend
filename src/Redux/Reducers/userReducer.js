@@ -44,6 +44,17 @@ export const userReducer = (state = initialState, action) => {
       return {...state, club: action.payload.club}
     }
 
+    case('UPDATE_USER'): {
+      return {...state, auth: {currentUser: {user: action.payload.user}}}
+    }
+
+    case('UPDATE_USER_FROM_JOIN'): {
+      console.log(action.payload)
+      return {...state, auth: {currentUser: {user: action.payload.user}}}
+    }
+
+
+
     default:
       return state
   }

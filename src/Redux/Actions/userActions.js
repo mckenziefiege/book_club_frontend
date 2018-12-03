@@ -8,6 +8,8 @@ export const updateWantToRead = (book) => ({type: 'UPDATE_WANT_TO_READ', payload
 export const updateRead = (book) => ({type: 'UPDATE_READ', payload: {book}})
 export const addBookToWantToRead = (book) => ({type: 'ADD_BOOK_TO_WANT_TO_READ', payload: {book}})
 export const changeEvent = (club) => ({type: 'CHANGE_EVENT', payload: {club}})
+export const updateUser = (user) => ({type: 'UPDATE_USER', payload: {user}})
+export const updateUserFromJoin = (user) => ({type: 'UPDATE_USER_FROM_JOIN', payload: {user}})
 
 export const loginAndFetch = (e) => {
   return (dispatch) => {

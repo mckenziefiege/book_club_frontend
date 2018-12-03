@@ -31,11 +31,38 @@ class UserRead extends Component {
     })
   }
 
+  handleFilter = (e) => {
+    e.preventDefault()
+    console.log(e.target.filter.value)
+    if (e.target.filter.value === 'A-Z') {
+      let new_books = this.state.books.sort(function(a, b) {
+        return a.title.localeCompare(b.title);
+      })
+      this.setState({
+        books: new_books
+      })
+    } else if (e.target.filter.value === 'Z-A') {
+        let new_books = this.state.books.sort(function(a, b) {
+          return b.title.localeCompare(a.title);
+      })
+      this.setState({
+        books: new_books
+      })
+    }
+  }
+
   render() {
     let bookCards = this.state.books !== undefined && this.state.books.map(book => <UserBookCard bookObj={book} key={book.id} deleteBook={this.deleteBook}/>)
     return (
       <div>
         <UserLinks />
+        <form onSubmit={(e) => this.handleFilter(e)}>
+        <select className="filter" name="filter" >
+          <option name="filter" value="A-Z">A-Z</option>
+          <option name="filter" value="Z-A">Z-A</option>
+        </select>
+        <input type="submit" />
+        </form>
         {bookCards}
       </div>
       )

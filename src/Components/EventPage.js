@@ -5,8 +5,7 @@ import UserLinks from './UserLinks.js'
 class EventPage extends Component {
 
   render () {
-    console.log(this.props)
-    let usernames = this.props.club.users && this.props.club.users.map(user => `${user.first_name} `)
+    let usernames = this.props.club.users && this.props.club.users.map(user => <div> <p>{user.first_name} {user.last_name}</p> </div>)
     return (
       <div>
       <UserLinks />

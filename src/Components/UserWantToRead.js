@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import UserBookCard from './UserBookCard.js'
 import { connect } from 'react-redux'
 import UserLinks from './UserLinks.js'
-import { updateWantToRead } from '../Redux/Actions/userActions.js'
+import { updateWantToRead, updateUser } from '../Redux/Actions/userActions.js'
 
 class UserWantToRead extends Component {
   state = {
@@ -16,7 +16,7 @@ class UserWantToRead extends Component {
       fetch(`http://localhost:3000/user_books/${id}`, {
         method: "DELETE"})
         .then(resp => resp.json())
-        .then(resp => this.props.updateWantToRead(new_user_books))
+        .then(resp => console.log(resp))
         let new_books = this.state.books.filter(book => book.id !== obj.id)
       this.setState({
         books: new_books
@@ -31,12 +31,39 @@ class UserWantToRead extends Component {
     })
   }
 
+  handleFilter = (e) => {
+    e.preventDefault()
+    console.log(e.target.filter.value)
+    if (e.target.filter.value === 'A-Z') {
+      let new_books = this.state.books.sort(function(a, b) {
+        return a.title.localeCompare(b.title);
+      })
+      this.setState({
+        books: new_books
+      })
+    } else if (e.target.filter.value === 'Z-A') {
+        let new_books = this.state.books.sort(function(a, b) {
+          return b.title.localeCompare(a.title);
+      })
+      this.setState({
+        books: new_books
+      })
+    }
+  }
+
   render() {
     console.log(this.props)
     let bookCards = this.state.books !== undefined && this.state.books.map(book => <UserBookCard bookObj={book} key={book.id} deleteBook={this.deleteBook}/>)
     return (
       <div>
         <UserLinks />
+        <form onSubmit={(e) => this.handleFilter(e)}>
+        <select className="filter" name="filter" >
+          <option name="filter" value="A-Z">A-Z</option>
+          <option name="filter" value="Z-A">Z-A</option>
+        </select>
+        <input type="submit" />
+        </form>
         {bookCards}
       </div>
       )
@@ -54,7 +81,8 @@ class UserWantToRead extends Component {
 
   const mapDispatchToProps = (dispatch) => {
     return {
-      updateWantToRead: (resp) => dispatch(updateWantToRead(resp))
+      updateWantToRead: (resp) => dispatch(updateWantToRead(resp)),
+      updateUser: (resp) => dispatch(updateUser(resp))
     }
   }
 

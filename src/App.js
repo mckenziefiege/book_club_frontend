@@ -26,6 +26,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('in app', this.props.user)
     return (
       <div>
         <NavBar />

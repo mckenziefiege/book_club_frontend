@@ -23,6 +23,7 @@ class BooksContainer extends Component {
       <div>
         <UserLinks />
         <SearchBar searchHandler={this.searchHandler}/>
+        {this.state.books.length === 0 ? <p className="errormessage"> * No results match your search</p> : null}
         {bookCards}
       </div>
     )

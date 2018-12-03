@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { addBookToWantToRead } from '../Redux/Actions/userActions.js'
+import { addBookToWantToRead, updateUser } from '../Redux/Actions/userActions.js'
 
 class BookCard extends Component {
 
@@ -25,9 +25,8 @@ class BookCard extends Component {
         book_id: book.id,
         user_id: this.props.user.id,
       })
-    })).then(resp => resp.json()).then(resp => {
-      this.props.addBookToWantToRead(resp)
-    })
+    })).then(resp => resp.json())
+    .then(resp => this.props.updateUser(resp.user))
   }
 
   render() {
@@ -50,7 +49,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addBookToWantToRead: (resp) => dispatch(addBookToWantToRead(resp))
+    addBookToWantToRead: (resp) => dispatch(addBookToWantToRead(resp)),
+    updateUser: (resp) => dispatch(updateUser(resp))
   }
 }
 
