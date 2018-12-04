@@ -10,6 +10,7 @@ export const addBookToWantToRead = (book) => ({type: 'ADD_BOOK_TO_WANT_TO_READ',
 export const changeEvent = (club) => ({type: 'CHANGE_EVENT', payload: {club}})
 export const updateUser = (user) => ({type: 'UPDATE_USER', payload: {user}})
 export const updateUserFromJoin = (user) => ({type: 'UPDATE_USER_FROM_JOIN', payload: {user}})
+export const updateUserFromFavorite = (user) => ({type: 'UPDATE_USER_FROM_FAVORITE', payload: {user}})
 
 export const loginAndFetch = (e) => {
   return (dispatch) => {

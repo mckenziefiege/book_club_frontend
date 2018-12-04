@@ -7,7 +7,6 @@ class EventPage extends Component {
 
 
   render () {
-    console.log(this.props.club)
     let usernames = this.props.club.users && this.props.club.users.map(user => <div> <p>{user.first_name} {user.last_name}</p> </div>)
     return (
       <div>

@@ -7,7 +7,7 @@ class CommentCard extends Component {
 
     return (
       <div className="commentCard">
-      <p>{this.props.commentObj.user.first_name}:</p><p>{this.props.commentObj.content}</p>
+      <p>{this.props.commentObj.user.username}:</p><p>{this.props.commentObj.content}</p>
       </div>
     )
   }

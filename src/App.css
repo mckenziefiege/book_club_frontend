@@ -14,13 +14,15 @@
 .commentContainer {
   border-style: solid;
   border-width: 2px;
-  padding: 10px;
+  margin: 5px;
+  padding: 5px;
 }
 
 .commentCard {
   border-style: solid;
   border-width: 2px;
-  padding: 10px;
+  margin: 5px;
+  padding: 5px;
 }
 
 .backgroundphoto {

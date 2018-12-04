@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { updateUser, updateUserFromFavorite } from '../Redux/Actions/userActions.js'
 
 class UserBookCard extends Component {
   state = {
     clicked: false,
     reviewForm: false,
-    categoryForm: false
+    categoryForm: false,
+    favorited: this.props.bookObj.favorited
   }
 
   handleClickedImage = () => {
@@ -56,6 +58,24 @@ class UserBookCard extends Component {
     })
   }
 
+
+  changeFavorited = (obj) => {
+    let new_favorite = !obj.favorited
+    this.setState({
+      favorited: new_favorite
+    })
+    console.log(this.state.favorited)
+    fetch(`http://localhost:3000/books/${obj.id}`, {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}`
+      },
+      body: JSON.stringify({
+        favorited: new_favorite
+      })
+    })
+  }
+
   renderReviewForm (){
     return (
       <div className="reviewform">
@@ -85,10 +105,11 @@ class UserBookCard extends Component {
 
   render() {
     return (
-
       <div className="userbookcard">
         <img className="cardimage" onClick={this.handleClickedImage} alt={this.props.bookObj.title} src={this.props.bookObj.image}/>
         <h4>{this.props.bookObj.title}</h4>
+        <div>{this.state.favorited === true ? <i onClick={() => this.changeFavorited(this.props.bookObj)} className="fas fa-heart"></i> : <i onClick={() => this.changeFavorited(this.props.bookObj)} className="far fa-heart"></i>}</div>
+
         {this.state.clicked &&
           <div>
             <p>{this.props.bookObj.author}</p>
@@ -121,4 +142,8 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(UserBookCard)
+const mapDispatchToProps = (dispatch) => {
+  return {updateUserFromFavorite: (resp) => dispatch(updateUserFromFavorite(resp))}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserBookCard)

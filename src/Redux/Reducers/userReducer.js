@@ -45,12 +45,18 @@ export const userReducer = (state = initialState, action) => {
     }
 
     case('UPDATE_USER'): {
-      return {...state, auth: {currentUser: {user: action.payload.user}}}
+      return {...state, auth: {currentUser: action.payload}}
     }
 
     case('UPDATE_USER_FROM_JOIN'): {
       console.log(action.payload)
-      return {...state, auth: {currentUser: {user: action.payload.user}}}
+      return {...state, auth: {currentUser: action.payload}}
+    }
+
+    case('UPDATE_USER_FROM_FAVORITE'): {
+      console.log('in the update!!!')
+      console.log(action.payload)
+      return {...state, auth: {currentUser: action.payload}, books: {read: action.payload.read, want_to_read: action.payload.want_to_read, currently_reading: action.payload.currently_reading}}
     }
 
 

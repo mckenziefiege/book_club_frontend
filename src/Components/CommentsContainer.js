@@ -42,7 +42,6 @@ class CommentsContainer extends Component {
       <input type="text" name="content"/>
       <input type="submit"/>
       </form>
-      Comments:
       {commentCards}
       </div>
     )
