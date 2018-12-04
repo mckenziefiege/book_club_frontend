@@ -34,6 +34,7 @@ class EventCard extends Component {
       .then(resp => this.props.updateUser(resp))
   }
 
+
   render() {
     console.log(this.props.clubObj)
     let ids = this.props.user.user_events === undefined ? null : this.props.user.user_events.map(user_event => user_event.event_id)

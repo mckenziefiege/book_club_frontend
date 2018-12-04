@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import UserLinks from './UserLinks.js'
+import CommentsContainer from './CommentsContainer.js'
 
 class EventPage extends Component {
 
+
   render () {
+    console.log(this.props.club)
     let usernames = this.props.club.users && this.props.club.users.map(user => <div> <p>{user.first_name} {user.last_name}</p> </div>)
     return (
       <div>
@@ -16,6 +19,7 @@ class EventPage extends Component {
       <p>address: {this.props.club.address}, {this.props.club.city}, {this.props.club.state}, {this.props.club.zipcode}</p>
       <p>host: {this.props.club.host && this.props.club.host.first_name}</p>
       <p>Attendees: {usernames}</p>
+      <CommentsContainer />
       </div>
     )
   }

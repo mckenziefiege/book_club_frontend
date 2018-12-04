@@ -11,7 +11,17 @@
   /* color: #353538; */
 }
 
+.commentContainer {
+  border-style: solid;
+  border-width: 2px;
+  padding: 10px;
+}
 
+.commentCard {
+  border-style: solid;
+  border-width: 2px;
+  padding: 10px;
+}
 
 .backgroundphoto {
   background-image: url('https://images.unsplash.com/photo-1507738978512-35798112892c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=81010823b449bfb0f874f6c8d71a5df7&auto=format&fit=crop&w=1350&q=80');
