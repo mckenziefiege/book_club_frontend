@@ -48,6 +48,11 @@ class UserRead extends Component {
       this.setState({
         books: new_books
       })
+    } else if (e.target.filter.value === 'Favorites') {
+      let new_books = this.state.books.filter(book => book.favorited === true)
+      this.setState({
+        books: new_books
+      })
     }
   }
 
@@ -60,6 +65,7 @@ class UserRead extends Component {
         <select className="filter" name="filter" >
           <option name="filter" value="A-Z">A-Z</option>
           <option name="filter" value="Z-A">Z-A</option>
+          <option name="filter" value="Favorites">Favorites</option>
         </select>
         <input type="submit" />
         </form>

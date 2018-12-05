@@ -1,38 +1,70 @@
 @import url('https://fonts.googleapis.com/css?family=Lobster');
 @import url('//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css');
-
 @import url('https://fonts.googleapis.com/css?family=Tajawal');
 @import url('https://fonts.googleapis.com/css?family=Arima+Madurai');
-
 
 * {
   font-family: 'Tajawal', sans-serif;
   font-size: 20px;
-  /* color: #353538; */
 }
 
 .commentContainer {
-  border-style: solid;
-  border-width: 2px;
   margin: 5px;
   padding: 5px;
 }
 
+#commentsubmitbutton {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .commentCard {
-  border-style: solid;
-  border-width: 2px;
+  border-style: outset;
+  border-width: 1px;
   margin: 5px;
   padding: 5px;
+}
+
+.commentdate {
+  font-size: 12px;
+}
+
+.eventPageContainer {
+  max-height: 100vw;
+}
+
+.eventPagecol1 {
+  float: left;
+  width: 30%;
+  background-color: rgba(	255,245,238, 0.3);
+  padding: 10px;
+  border-style: outset;
+  border-width: 2px;
+}
+
+.eventPagecol2 {
+  float: right;
+  width: 65%;
+  max-height: 100vw;
+  overflow: scroll;
+}
+
+.eventForm{
+  padding: 20px;
+}
+
+.eventFormInput {
+  margin: 5px;
 }
 
 .backgroundphoto {
   background-image: url('https://images.unsplash.com/photo-1507738978512-35798112892c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=81010823b449bfb0f874f6c8d71a5df7&auto=format&fit=crop&w=1350&q=80');
   background-position: center;
-   background-repeat: no-repeat;
-   height: 100%;
-   background-size: cover;
-   width: 100%;
-   min-height: 100vh;
+  background-repeat: no-repeat;
+  height: 100%;
+  background-size: cover;
+  width: 100%;
+  min-height: 100vh;
 }
 
 .button {
@@ -52,10 +84,12 @@
 
 .reviewform {
   padding: 20px;
+
 }
 
 .inputfieldsreview {
-  padding: 20px;
+  padding: 5px;
+  float: left;
 }
 
 .button:hover {
@@ -100,7 +134,6 @@ ul {
    padding: 0;
    overflow: hidden;
    margin-top: 20px;
-   /* background-color: #333; */
  }
 
  .checked {
@@ -118,34 +151,55 @@ ul {
 
  .logo {
    float: left;
-   /* font-family: 'Lobster', cursive; */
    font-family: 'Arima Madurai', cursive;
-
    margin-left: 20px;
    font-size: 40px;
    font-weight: bold;
  }
 
- .userbookcard, .reviewcard, .searcheventcard {
-    border-width: 1px;
-    border-style: outset; */
-    margin: 20px;
+  .reviewcard {
+    margin: 30px;
     padding: 20px;
-    text-align: center;
-    max-width: 50vw;
-    justify-content: center;
-    margin-bottom: 15px;
-    /* background-color: rgba(135, 168, 178, 0.2) */
-    background-color: rgba(	255,245,238, 0.3)
+    max-width: 80vw;
+    margin-bottom: 30px;
+    display: block;
+    background-color: rgba(	255,245,238, 0.3);
+ }
+
+ .userbookcard {
+   border-width: 2px;
+   border-style: outset;
+   margin: 20px;
+   padding-top: 25px;
+   display: inline-block;
+   text-align: center;
+   width: 40vw;
+   height: 25vw;
+   justify-content: center;
+   overflow: scroll;
+   background-color: rgba(	255,245,238, 0.3);
+ }
+
+ .searcheventcard {
+   border-width: 2px;
+   border-style: outset;
+   margin: 20px;
+   padding: 30px;
+   display: inline-block;
+   text-align: center;
+   width: 35vw;
+   height: 20vw;
+   justify-content: center;
+   overflow: scroll;
+   background-color: rgba(	255,245,238, 0.3);
  }
 
  .cardimage {
    border-style: outset;
+   border-width: 3px;
  }
 
  .loginform, .signupform{
-
-   /* display: inline-block; */
    padding: 20px;
    justify-content: center;
    text-align: center;
@@ -155,11 +209,13 @@ ul {
    margin: -100px 0 0 -150px;
    padding-left: 75px;
    padding-right: 75px;
-   /* padding-top: 50px;
-   padding-bottom: 50px; */
+   padding-top: 25px;
+   padding-bottom: 25px;
    background-color: white;
    font-size: 20px;
    box-shadow: 50px;
+   border-style: dotted;
+   border-width: 2px;
 
  }
 
@@ -176,41 +232,30 @@ ul {
  .homepage {
    background-image: url("https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9731a56510305fd6f05aeaa9d68e41e3&auto=format&fit=crop&w=1650&q=80");
    background-position: center;
-    background-repeat: no-repeat;
-    height: 100%;
-    background-size: cover;
-    width: 100%;
-    min-height: 100vh;
-    /* opacity: .5; */
+   background-repeat: no-repeat;
+   height: 100%;
+   background-size: cover;
+   width: 100%;
+   min-height: 100vh;
  }
 
  .loginpage, .signuppage {
- background-image: url("https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9731a56510305fd6f05aeaa9d68e41e3&auto=format&fit=crop&w=1650&q=80");
- background-position: center;
-  background-repeat: no-repeat;
-  height: 100%;
-  background-size: cover;
-  width: 100%;
-  min-height: 100vh;
+   background-image: url("https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9731a56510305fd6f05aeaa9d68e41e3&auto=format&fit=crop&w=1650&q=80");
+   background-position: center;
+   background-repeat: no-repeat;
+   height: 100%;
+   background-size: cover;
+   width: 100%;
+   min-height: 100vh;
 }
 
  body {
-  background:rgba(255,255,255,0.5); /* applies a 50% transparent white background */
+  background:rgba(255,255,255,0.5);
 }
 
 .profileimage {
   border-radius: 50%;
-
 }
-
-/* .navBar {
-  background-image: url('https://images.unsplash.com/photo-1470549638415-0a0755be0619?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fca4fdf173544fec47eafc91aa1d9636&auto=format&fit=crop&w=1350&q=80');
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100%;
-  background-size: cover;
-  width: 100%;
-} */
 
 .userlinks {
   display: inline-block;
@@ -224,7 +269,6 @@ ul {
   border-style: outset;
   border-width: 2px;
   margin-bottom: 20px;
-  /* background-color: #b9c9c0; */
   background-color: rgba(196, 211, 199, 0.7)
 
 }
@@ -350,12 +394,11 @@ a.before:hover:before,a.after:hover:after{
   top: 25%;
   left: 50%;
   transform: translate(-50%, -50%);
-
-  margin-top: 50px;
+  margin-top: 35px
 }
 
 .searchbar {
-margin: 150px;
+  margin: 150px;
 }
 
 .searchbookcard {
@@ -401,11 +444,9 @@ h1 { font-size: 1.5em; margin: 10px; }
 .rating > label {
   color: #ddd;
  float: right;
-
 }
 
 /***** CSS Magic to Highlight Stars on Hover *****/
-
 .rating > input:checked ~ label, /* show gold star when clicked */
 .rating:not(:checked) > label:hover, /* hover current star */
 .rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */

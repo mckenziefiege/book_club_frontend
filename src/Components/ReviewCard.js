@@ -16,9 +16,8 @@ class ReviewCard extends Component {
     <div className="reviewcard">
       <img className="profileimage" alt={this.props.reviewObj.user.username} height="50" src={this.props.reviewObj.user.image}/>
       <p>{this.props.reviewObj.user.username}</p>
-      <p>{this.props.reviewObj.book.title}</p>
+      <b><p>{this.props.reviewObj.book.title}</p></b>
       <p>{this.props.reviewObj.title}</p>
-      <p>{this.props.reviewObj.user.username}</p>
       <p>{this.renderStars()}</p>
       <p>{this.props.reviewObj.content}</p>
     </div>

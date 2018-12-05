@@ -5,6 +5,10 @@ import UserLinks from './UserLinks.js'
 
 class UserFeed extends Component {
 
+  state ={
+    formClicked: false
+  }
+
     submitNewEvent = (e) => {
       e.preventDefault()
       let options = {
@@ -34,27 +38,42 @@ class UserFeed extends Component {
       }))
     }
 
+    changeFormClicked = () => {
+      this.setState({
+        formClicked: !this.state.formClicked
+      })
+    }
+
+    renderForm() {
+      return (
+      <form className="eventForm" onSubmit={(e) => this.submitNewEvent(e)}>
+        <label>Name of Book Club<input className="eventFormInput" type="text" name="name"/><br /></label>
+        <label>Address<input className="eventFormInput" type="text" name="address"/><br /></label>
+        <label>City<input className="eventFormInput"type="text" name="city"/><br /></label>
+        <label>State<input className="eventFormInput" type="text" name="state"/><br /></label>
+        <label>Zip Code<input className="eventFormInput" type="text" name="zipcode"/><br /></label>
+        <label>Date<input className="eventFormInput" type="text" name="date" placeholder="mm/dd/yyyy"/><br /></label>
+        <label>Time<input className="eventFormInput" type="text" name="time" placeholder="-- : -- am/pm"/><br /></label>
+        <label>Description <br /><textarea rows="4" cols="50" className="eventFormInput" type="text" name="description"></textarea><br /></label>
+        <input type="hidden" name="host"/><br />
+        <input className="button" type="submit"/><br />
+      </form>
+      )
+    }
+
+
+
   render() {
     return (
       <div>
         <UserLinks />
         <div className="currentlyreading">
-          <h2>Currently Reading</h2>
+          <h1>Welcome {this.props.user && this.props.user.first_name}!</h1>
+          <h2 onClick={this.changeFormClicked}>Click Here to Create a New Book Club!</h2>
+          {this.state.formClicked ? this.renderForm() : null}
+          <h2>Books Currently Reading: </h2>
           <CurrentlyReading />
         </div>
-      <p>Create an Event!</p>
-        <form onSubmit={(e) => this.submitNewEvent(e)}>
-          <label>Name<input type="text" name="name"/><br /></label>
-          <label>Address<input type="text" name="address"/><br /></label>
-          <label>City<input type="text" name="city"/><br /></label>
-          <label>State<input type="text" name="state"/><br /></label>
-          <label>Zip Code<input type="text" name="zipcode"/><br /></label>
-          <label>Date<input type="text" name="date" placeholder="mm/dd/yyyy"/><br /></label>
-          <label>Time<input type="text" name="time" placeholder="-- : -- am/pm"/><br /></label>
-          <label>Description<input type="text" name="description"/><br /></label>
-          <input type="hidden" name="host"/><br />
-          <input className="button" type="submit"/><br />
-        </form>
       </div>
     )
   }

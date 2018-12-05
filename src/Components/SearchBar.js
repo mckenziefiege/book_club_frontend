@@ -16,7 +16,7 @@ class SearchBar extends Component {
       <div className="searchbar">
         <div className="wrap">
           <p>Search books:</p>
-          <input className="searchTerm" onChange={this.changeHandler} value={this.state.searchTerm} type="text" name="searchTerm" /><button className="searchButton" onClick={() => this.props.searchHandler(this.state.searchTerm)}><i className="fa fa-search"></i></button>
+          <input className="searchTerm" onChange={this.changeHandler} placeholder="Search by title, author or subject" value={this.state.searchTerm} type="text" name="searchTerm" /><button className="searchButton" onClick={() => this.props.searchHandler(this.state.searchTerm)}><i className="fa fa-search"></i></button>
         </div>
       </div>
     )

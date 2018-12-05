@@ -4,7 +4,6 @@ import SearchEvents from './SearchEvents.js'
 import EventCard from './EventCard.js'
 
 class EventsContainer extends Component {
-
   state = {
     events: []
   }
@@ -21,13 +20,11 @@ class EventsContainer extends Component {
   }
 
   render() {
-    console.log('in event container', this.state.events)
     let clubCards = this.state.events.map(club => <EventCard clubObj={club} key={club.id}/>)
     return (
       <div>
         <UserLinks />
         <SearchEvents searchHandler={this.searchHandler}/>
-        {this.state.events.length === 0 ? <p className="errormessage"> * No results match your search</p> : null}
         {clubCards}
       </div>
     )

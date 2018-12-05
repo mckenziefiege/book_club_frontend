@@ -64,7 +64,6 @@ class UserBookCard extends Component {
     this.setState({
       favorited: new_favorite
     })
-    console.log(this.state.favorited)
     fetch(`http://localhost:3000/books/${obj.id}`, {
       method: "PATCH",
       headers: {
@@ -80,8 +79,8 @@ class UserBookCard extends Component {
     return (
       <div className="reviewform">
         <form onSubmit={(e) => this.handleSubmit(e)}>
-          <div className="inputfieldsreview"><label>Title<input type="text" name="title"/></label><br /></div>
-          <div className="inputfieldsreview"><label>Review<textarea rows="4" cols="50" type="text" name="content"></textarea></label></div>
+          <div className="inputfieldsreview"><input type="text" name="title" placeholder="Review Title"/><br /></div>
+          <div className="inputfieldsreview"><textarea rows="4" cols="50" type="text" name="content" placeholder="Review content..."></textarea></div>
 
             <fieldset className="rating">
               <input type="radio" id="star5" name="rating" value="5" /><label className = "full" htmlFor="star5" title="Awesome - 5 stars"></label>
@@ -97,7 +96,7 @@ class UserBookCard extends Component {
 
             <input type="hidden" name="userid" value={this.props.user.id}/><br />
             <input type="hidden" name="bookid" value={this.props.bookObj.id}/><br />
-            <input type="submit"/>
+            <input className="button" type="submit"/>
         </form>
       </div>
     )

@@ -10,7 +10,6 @@ class CommentsContainer extends Component {
 
   postComment = (e) => {
     e.preventDefault()
-    console.log(e.target.content.value)
     fetch('http://localhost:3000/comments', {
       method: "POST",
       headers: {'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}`},
@@ -21,7 +20,7 @@ class CommentsContainer extends Component {
       })
     }).then(resp => resp.json())
     .then(resp => this.setState({
-      comments: [...this.state.comments, resp]
+      comments: [resp, ...this.state.comments]
     }))
   }
 
@@ -34,13 +33,12 @@ class CommentsContainer extends Component {
   }
 
   render() {
-    console.log(this.state.comments)
     let commentCards = this.state.comments ? this.state.comments.map(comment => <CommentCard commentObj={comment} key={comment.id}/>) : null
     return (
       <div className="commentContainer">
       <form onSubmit={this.postComment}>
-      <input type="text" name="content"/>
-      <input type="submit"/>
+      <textarea rows="3" cols="90" type="text" name="content" placeholder="Write something..."></textarea><br />
+      <input className="button" id="commentsubmitbutton" type="submit"/>
       </form>
       {commentCards}
       </div>

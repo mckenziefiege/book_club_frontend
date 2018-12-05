@@ -31,7 +31,6 @@ class CurrentlyReading extends Component {
     }
 
   render() {
-    console.log(this.props)
     let bookCards = this.state.books !== undefined && this.state.books.map(book => <UserBookCard bookObj={book} key={book.id} deleteBook={this.deleteBook}/>)
     return (
       <div>

@@ -6,10 +6,6 @@ import { connect } from 'react-redux'
 
 class NavBar extends Component {
 
-  // renderProfileButton = () => {
-  //   return <Link to='/userfeed'><li>Profile</li></Link>
-  // }
-
   renderLogoutButton = () => {
     return <Link to='/'><li><Logout /></li></Link>
   }
@@ -30,7 +26,7 @@ class NavBar extends Component {
     return (
       <div className="navBar">
         <ul>
-          <Link to='/'><h1 className="logo">Book Club</h1></Link>
+          <Link to='/'><h1 className="logo">Book Club <i class="fas fa-book-open"></i></h1></Link>
           {this.props.user && this.renderProfileImage()}
           {this.props.user ? this.renderLogoutButton() : this.renderLoginButton()}
           {!this.props.user && this.renderSignUpButton()}

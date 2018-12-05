@@ -30,7 +30,6 @@ class BookCard extends Component {
   }
 
   render() {
-    console.log('book card', this.props)
     return (
       <div className="searchbookcard">
         <img className="searchbookimage" alt={this.props.bookObj.volumeInfo.title} src={this.props.bookObj.volumeInfo.imageLinks === undefined ? null : this.props.bookObj.volumeInfo.imageLinks.thumbnail}/>

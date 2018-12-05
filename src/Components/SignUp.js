@@ -15,13 +15,13 @@ class SignUp extends Component {
       <div className="signupform">
         <form onSubmit={this.handleSubmit}>
           <h2>Sign Up</h2>
-          <label>First Name<input type="text" name="firstname"/></label><br />
-          <label>Last Name<input type="text" name="lastname" /></label><br />
-          <label>City<input type="text" name="city" /></label><br />
-          <label>State<input type="text" name="state" /></label><br />
-          <label>Profile Photo<input type="text" name="image" /></label><br />
-          <label>Username<input type="text" name="username" /></label><br />
-          <label>Password<input type="text" name="password"/></label><br />
+          <input type="text" name="firstname" placeholder="first name"/><br />
+          <input type="text" name="lastname" placeholder="last name"/><br />
+          <input type="text" name="city" placeholder="city"/><br />
+          <input type="text" name="state" placeholder="state"/><br />
+          <input type="text" name="image" placeholder="profile image url"/><br />
+          <input type="text" name="username" placeholder="username"/><br />
+          <input type="text" name="password" placeholder="password"/><br />
           <input type="Submit" placeholder="Username"/>
         </form>
       </div>
