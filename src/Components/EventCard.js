@@ -38,8 +38,8 @@ class EventCard extends Component {
     <div className="searcheventcard">
       {ids.includes(this.props.clubObj.id) ? <button className="button" onClick={(e) => this.leaveEvent(e, this.props.clubObj)}>Leave Event</button> : <button className="button" onClick={(e) => this.joinEvent(e, this.props.clubObj)}>Join Event!</button>}
       <Link to='/event-page'><h4 onClick={() => this.props.changeEvent(this.props.clubObj)}>{this.props.clubObj.name}</h4></Link>
-      <p><i class="far fa-calendar-alt"></i>  {this.props.clubObj.date}</p>
-      <p><i class="far fa-clock"></i>  {this.props.clubObj.time}</p>
+      <p><i className="far fa-calendar-alt"></i>  {this.props.clubObj.date}</p>
+      <p><i className="far fa-clock"></i>  {this.props.clubObj.time}</p>
       <p>{this.props.clubObj.description}</p>
     </div>
     )

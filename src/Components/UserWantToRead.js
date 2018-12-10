@@ -60,6 +60,7 @@ class UserWantToRead extends Component {
     return (
       <div>
         <UserLinks />
+        <h2>Books I want to Read</h2>
         <form onSubmit={(e) => this.handleFilter(e)}>
         <select className="filter" name="filter" >
           <option name="filter" value="A-Z">A-Z</option>

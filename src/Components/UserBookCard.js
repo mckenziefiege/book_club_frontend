@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { updateUser, updateUserFromFavorite } from '../Redux/Actions/userActions.js'
+import { updateUserFromFavorite } from '../Redux/Actions/userActions.js'
 
 class UserBookCard extends Component {
   state = {

@@ -33,7 +33,6 @@ class UserRead extends Component {
 
   handleFilter = (e) => {
     e.preventDefault()
-    console.log(e.target.filter.value)
     if (e.target.filter.value === 'A-Z') {
       let new_books = this.state.books.sort(function(a, b) {
         return a.title.localeCompare(b.title);
@@ -61,6 +60,7 @@ class UserRead extends Component {
     return (
       <div>
         <UserLinks />
+        <h2>{"Books I've Read"}</h2>
         <form onSubmit={(e) => this.handleFilter(e)}>
         <select className="filter" name="filter" >
           <option name="filter" value="A-Z">A-Z</option>

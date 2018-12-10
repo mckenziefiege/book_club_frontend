@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
 
 class HomePage extends Component {
 
@@ -7,8 +6,8 @@ class HomePage extends Component {
     return (
       <div className="homepage">
         <div id="welcomemessage">
-          <h1>Welcome to Book Club!</h1>
-          <p>Join a community where you can attend book clubs in your area and keep track of what your reading.</p>
+          <h1>Welcome to Novel Finds!</h1>
+          <p>{"Join a community where you can attend book clubs in your area and keep track of what you're reading."}</p>
         </div>
       </div>
     )
