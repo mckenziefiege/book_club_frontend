@@ -4,6 +4,14 @@ Novel Finds is an app designed to keep track of what you're reading and to join 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Motivation
+
+This app exists to give book lovers a place to keep track of what they've read or what they want to read. For those that want to join a book club to connect with other book lovers, users can create and join book clubs. 
+
+## Screenshots
+
+
+
 ## Backend
 
 To access application backend: https://github.com/mckenziefiege/book_club_backend
