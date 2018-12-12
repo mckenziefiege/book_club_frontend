@@ -11,6 +11,9 @@ This app exists to give book lovers a place to keep track of what they've read o
 ## Screenshots
 
 <img width="1433" alt="screen shot 2018-12-12 at 5 43 13 pm" src="https://user-images.githubusercontent.com/38592156/49903782-4854b480-fe36-11e8-87c7-08d1befc9b04.png">
+<img width="1433" alt="screen shot 2018-12-12 at 5 43 45 pm" src="https://user-images.githubusercontent.com/38592156/49903853-75a16280-fe36-11e8-8cfa-56b85695a3f5.png">
+<img width="1431" alt="screen shot 2018-12-12 at 5 44 48 pm" src="https://user-images.githubusercontent.com/38592156/49903854-776b2600-fe36-11e8-9985-812c5ef08f8b.png">
+
 
 ## Backend
 
