@@ -20,6 +20,10 @@ This app exists to give book lovers a place to keep track of what they've read o
 - On a bookclub's page, there is an information snippet including attendees, address, time, decription and name of the host. Bookclub pages also include a discussion forum where users can post comments about the bookclub.
 - Users have the ability to search for reviews by entering the title of a book
 
+## Demo
+
+[Demo Video](https://youtu.be/7J5aMVx50gk)
+
 ## Screenshots
 
 <img width="1433" alt="screen shot 2018-12-12 at 5 43 13 pm" src="https://user-images.githubusercontent.com/38592156/49903782-4854b480-fe36-11e8-87c7-08d1befc9b04.png">
