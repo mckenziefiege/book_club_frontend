@@ -29,6 +29,10 @@ https://developers.google.com/books/docs/v1/using
 
 In the project directory, you can run:
 
+### Install Node Package Manager
+
+``` npm install ```
+
 ### `npm start`
 
 Runs the app in the development mode.<br>
