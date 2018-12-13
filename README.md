@@ -29,9 +29,9 @@ This app utilizes the Google Books Api
 
 In the project directory, you can run:
 
-### Install Node Package Manager
+### `npm install`
 
-``` npm install ```
+Installs Node Package Manager
 
 ### `npm start`
 
