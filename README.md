@@ -17,13 +17,13 @@ This app exists to give book lovers a place to keep track of what they've read o
 
 ## Backend
 
-To access application backend: https://github.com/mckenziefiege/book_club_backend
+Application backend and instructions for setup: [Novel Finds Backend](https://github.com/mckenziefiege/book_club_backend)
 
 ## API Reference
 
 This app utilizes the Google Books Api
 
-https://developers.google.com/books/docs/v1/using
+[Google Books Documentation](https://developers.google.com/books/docs/v1/using)
 
 ## Available Scripts
 
