@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Tajawal');
 @import url('https://fonts.googleapis.com/css?family=Arima+Madurai');
 
+
 * {
   font-family: 'Tajawal', sans-serif;
   font-size: 20px;
@@ -19,10 +20,9 @@
 }
 
 .commentCard {
-  border-style: outset;
-  border-width: 1px;
   margin: 5px;
   padding: 5px;
+  box-shadow: 0 25px 25px rgba(0, 0, 0, .15);
 }
 
 .commentdate {
@@ -36,10 +36,8 @@
 .eventPagecol1 {
   float: left;
   width: 30%;
-  background-color: rgba(	255,245,238, 0.3);
   padding: 10px;
-  border-style: outset;
-  border-width: 2px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, .15);
 }
 
 .eventPagecol2 {
@@ -49,7 +47,7 @@
   overflow: scroll;
 }
 
-.eventForm{
+.eventForm {
   padding: 20px;
 }
 
@@ -84,7 +82,6 @@
 
 .reviewform {
   padding: 20px;
-
 }
 
 .inputfieldsreview {
@@ -155,6 +152,8 @@ ul {
    margin-left: 20px;
    font-size: 40px;
    font-weight: bold;
+   text-transform: uppercase;
+   letter-spacing: 5px;
  }
 
   .reviewcard {
@@ -163,26 +162,27 @@ ul {
     max-width: 80vw;
     margin-bottom: 30px;
     display: block;
-    background-color: rgba(	255,245,238, 0.3);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .15);
  }
 
  .userbookcard {
-   border-width: 2px;
-   border-style: outset;
    margin: 20px;
-   padding-top: 25px;
+   padding: 30px;
    display: inline-block;
    text-align: center;
    width: 40vw;
    height: 25vw;
    justify-content: center;
    overflow: scroll;
-   background-color: rgba(	255,245,238, 0.3);
+   box-shadow: 0 15px 40px rgba(0, 0, 0, .15);
+   transition: all .4s;
+ }
+
+ .userbookcard:hover {
+   transform: translateY(-10px) scale(1.03);
  }
 
  .searcheventcard {
-   border-width: 2px;
-   border-style: outset;
    margin: 20px;
    padding: 30px;
    display: inline-block;
@@ -191,12 +191,15 @@ ul {
    height: 20vw;
    justify-content: center;
    overflow: scroll;
-   background-color: rgba(	255,245,238, 0.3);
+   box-shadow: 0 15px 40px rgba(0, 0, 0, .15);
  }
 
  .cardimage {
-   border-style: outset;
-   border-width: 3px;
+   box-shadow: 0 15px 40px rgba(0, 0, 0, .15);
+ }
+
+ .cardimage:hover {
+   cursor: pointer;
  }
 
  .loginform, .signupform{
@@ -216,7 +219,6 @@ ul {
    box-shadow: 50px;
    border-style: dotted;
    border-width: 2px;
-
  }
 
  input {
@@ -255,21 +257,28 @@ ul {
 
 .profileimage {
   border-radius: 50%;
+  transition: all .2s;
+  box-shadow: 0 20px 40px rgba(0, 0, 0,.2);
+}
+
+.profileimage:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0,.3);
 }
 
 .userlinks {
   display: inline-block;
   justify-content: center;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 15px;
+  text-transform: uppercase;
 }
 
 .container {
   text-align: center;
-  border-style: outset;
-  border-width: 2px;
   margin-bottom: 20px;
-  background-color: rgba(196, 211, 199, 0.7)
+  background-color: rgba(196, 211, 199, 0.7);
+  box-shadow: 10px 15px 30px rgba(0, 0, 0, .20);
+  border-radius: 5px;
 
 }
 
@@ -366,6 +375,10 @@ a.before:hover:before,a.after:hover:after{
   color: #353538;
 }
 
+.fas:hover, .fa-heart:hover {
+  cursor: pointer;
+}
+
 .searchTerm:focus{
   color: #000000;
 }
@@ -402,13 +415,11 @@ a.before:hover:before,a.after:hover:after{
 }
 
 .searchbookcard {
-  border-width: 2px;
-  border-style: outset;
   margin: 20px;
   padding: 20px;
   display: inline-block;
   max-width: 50;
-  background-color: #d5dfe2;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, .15);
 }
 
 .searchbookimage {
