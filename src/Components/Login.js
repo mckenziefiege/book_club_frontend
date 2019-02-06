@@ -14,7 +14,7 @@ class Login extends Component {
   renderLoginForm = () => {
     return (
     <div className="loginform">
-      <h2>Log in</h2>
+      <h2 className="secondary-header user-page-header">Log in</h2>
         <form onSubmit={this.handleSubmit}>
           <input type="text" name="username" placeholder="username"/><br />
           <input type="password" name="password" placeholder="password"/><br />

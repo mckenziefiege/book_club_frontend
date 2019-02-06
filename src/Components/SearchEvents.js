@@ -14,9 +14,9 @@ class SearchEvents extends Component {
   render() {
     return (
       <div className="searchbar">
-        <div className="wrap">
-          <p>Search book clubs in your area </p>
-          <input className="searchTerm" onChange={this.changeHandler} value={this.state.searchTerm} type="text" name="searchTerm" placeholder="Zip Code"/><button className="searchButton" onClick={() => this.props.searchHandler(this.state.searchTerm)}><i className="fa fa-search"></i></button>
+        <div>
+          <h2 className="secondary-header">Search book clubs in your area</h2>
+          <input className="searchTerm" onChange={this.changeHandler} value={this.state.searchTerm} type="text" name="searchTerm" placeholder="Zip Code"/><button className="button" onClick={() => this.props.searchHandler(this.state.searchTerm)}>Search</button>
         </div>
       </div>
     )

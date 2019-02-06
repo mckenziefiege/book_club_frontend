@@ -9,14 +9,35 @@
   font-size: 20px;
 }
 
+html {
+  padding: 20px;
+}
+
 .commentContainer {
   margin: 5px;
   padding: 5px;
 }
 
+.filter {
+  padding: 50px;
+  margin-left: 50px;
+}
+
+select {
+  font-size: 25px;
+  margin: 20px;
+  background-color: #fff;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+  font-family: 'Tajawal', sans-serif;
+}
+
 #commentsubmitbutton {
   margin-top: 5px;
   margin-bottom: 5px;
+}
+
+.feed-headings {
+  margin: 30px;
 }
 
 .commentCard {
@@ -65,19 +86,13 @@
   min-height: 100vh;
 }
 
-.button {
-	display: inline-block;
-  padding: 5px;
-  margin: 2px;
-	border-radius: 0.2rem;
-	background-color: #939393;
-  color: white;
-	font-size: 13px;
-}
-
 .errormessage {
   margin-top: 250px;
   margin-left: 50px;
+}
+
+.user-tab-headers {
+  margin: 50px;
 }
 
 .reviewform {
@@ -144,6 +159,7 @@ ul {
     padding: 14px 16px;
     text-decoration: none;
     margin: 3px;
+    text-transform: uppercase;
  }
 
  .logo {
@@ -204,25 +220,29 @@ ul {
 
  .loginform, .signupform{
    padding: 20px;
-   justify-content: center;
    text-align: center;
-   position: absolute;
-   top: 55%;
-   left: 45%;
-   margin: -100px 0 0 -150px;
-   padding-left: 75px;
-   padding-right: 75px;
-   padding-top: 25px;
-   padding-bottom: 25px;
+   display: inline-block;
+   margin: 50px;
+   padding-left: 80px;
+   padding-right: 80px;
    background-color: white;
    font-size: 20px;
-   box-shadow: 50px;
-   border-style: dotted;
-   border-width: 2px;
+   box-shadow: 0 15px 40px rgba(250, 250, 250, .50);
+   border-radius: 3px;
  }
 
+ .secondary-header {
+   text-transform: uppercase;
+   letter-spacing: 5px;
+ }
+
+.form-option {
+  display: block;
+}
+
  input {
-   display: inline-block;
+   padding: 10px;
+   margin: 10px;
  }
 
  #welcomemessage {
@@ -249,10 +269,6 @@ ul {
    background-size: cover;
    width: 100%;
    min-height: 100vh;
-}
-
- body {
-  background:rgba(255,255,255,0.5);
 }
 
 .profileimage {
@@ -367,11 +383,8 @@ a.before:hover:before,a.after:hover:after{
 .searchTerm {
   float: left;
   width: 100%;
-  border: 3px solid #353538;
-  padding: 5px;
-  height: 20px;
+  padding: 20px;
   border-radius: 5px;
-  outline: none;
   color: #353538;
 }
 
@@ -383,35 +396,10 @@ a.before:hover:before,a.after:hover:after{
   color: #000000;
 }
 
-.fa-search {
-  color: white;
-}
-
-.searchButton {
-  position: absolute;
-  right: -50px;
-  width: 40px;
-  height: 36px;
-  border: 1px solid #353538;
-  background: #353538;
-  text-align: center;
-  color: white;
-  border-radius: 5px;
-  font-size: 20px;
-  display: inline;
-}
-
-.wrap {
-  width: 30%;
-  position: absolute;
-  top: 25%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin-top: 35px
-}
-
 .searchbar {
-  margin: 150px;
+  margin: 50px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
 .searchbookcard {
@@ -427,11 +415,15 @@ a.before:hover:before,a.after:hover:after{
   padding: 20px;
 }
 
-fieldset, label { margin: 0; padding: 0; }
-body{ margin: 20px; }
-h1 { font-size: 1.5em; margin: 10px; }
-
-/****** Style Star Rating Widget *****/
+.button {
+  padding: 5px;
+  margin: 10px;
+  text-transform: uppercase;
+  font-family: 'Tajawal', sans-serif;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, .15);
+  border-radius: 5px;
+  background-color: white;
+}
 
 .rating {
   border: none;
@@ -457,7 +449,7 @@ h1 { font-size: 1.5em; margin: 10px; }
  float: right;
 }
 
-/***** CSS Magic to Highlight Stars on Hover *****/
+/***** Highlight Stars on Hover *****/
 .rating > input:checked ~ label, /* show gold star when clicked */
 .rating:not(:checked) > label:hover, /* hover current star */
 .rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
@@ -466,3 +458,9 @@ h1 { font-size: 1.5em; margin: 10px; }
 .rating > input:checked ~ label:hover,
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
 .rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
+
+.footer {
+  background-color: rgba(196, 211, 199, 0.7);
+  padding: 20px;
+  border-radius: 3px;
+}
