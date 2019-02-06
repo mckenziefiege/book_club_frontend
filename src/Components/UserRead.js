@@ -60,14 +60,14 @@ class UserRead extends Component {
     return (
       <div>
         <UserLinks />
-        <h2>{"Books I've Read"}</h2>
+        <h2 className="secondary-header user-tab-headers">Books Read</h2>
         <form onSubmit={(e) => this.handleFilter(e)}>
         <select className="filter" name="filter" >
           <option name="filter" value="A-Z">A-Z</option>
           <option name="filter" value="Z-A">Z-A</option>
           <option name="filter" value="Favorites">Favorites</option>
         </select>
-        <input type="submit" />
+        <input className="button" type="submit" />
         </form>
         {bookCards}
       </div>

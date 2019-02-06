@@ -15,6 +15,8 @@ import ReviewContainer from './Components/ReviewContainer.js'
 import { connect } from 'react-redux'
 import { setAndFetchUser } from './Redux/Actions/userActions.js'
 import EventPage from './Components/EventPage.js'
+import Footer from './Components/Footer.js'
+
 
 class App extends Component {
 
@@ -42,6 +44,7 @@ class App extends Component {
           <Route path='/event-page' component={EventPage} />
           <Route path="/" component={HomePage} />
         </Switch>
+        <Footer />
       </div>
     );
   }

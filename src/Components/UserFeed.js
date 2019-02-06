@@ -47,32 +47,30 @@ class UserFeed extends Component {
     renderForm() {
       return (
       <form className="eventForm" onSubmit={(e) => this.submitNewEvent(e)}>
-        <label>Name of Book Club<input className="eventFormInput" type="text" name="name"/><br /></label>
-        <label>Address<input className="eventFormInput" type="text" name="address"/><br /></label>
-        <label>City<input className="eventFormInput"type="text" name="city"/><br /></label>
-        <label>State<input className="eventFormInput" type="text" name="state"/><br /></label>
-        <label>Zip Code<input className="eventFormInput" type="text" name="zipcode"/><br /></label>
-        <label>Date<input className="eventFormInput" type="text" name="date" placeholder="mm/dd/yyyy"/><br /></label>
-        <label>Time<input className="eventFormInput" type="text" name="time" placeholder="-- : -- am/pm"/><br /></label>
-        <label>Description <br /><textarea rows="4" cols="50" className="eventFormInput" type="text" name="description"></textarea><br /></label>
-        <input type="hidden" name="host"/><br />
-        <input className="button" type="submit"/><br />
+        <input placeholder="Name of Book Club" className="eventFormInput" type="text" name="name"/><br />
+        <input placeholder="Address"className="eventFormInput" type="text" name="address"/><br />
+        <input placeholder="City"className="eventFormInput"type="text" name="city"/><br />
+        <input placeholder="State" className="eventFormInput" type="text" name="state"/><br />
+        <input placeholder="Zip Code" className="eventFormInput" type="text" name="zipcode"/><br />
+        <input placeholder="Date" className="eventFormInput" type="text" name="date" placeholder="mm/dd/yyyy"/><br />
+        <input placeholder="Time" className="eventFormInput" type="text" name="time" placeholder="-- : -- am/pm"/><br />
+        <textarea placeholder="Description" rows="4" cols="50" className="eventFormInput" type="text" name="description"></textarea><br />
+        <input type="hidden" name="host"/>
+        <input className="button" type="submit"/>
       </form>
       )
     }
-
-
 
   render() {
     return (
       <div>
         <UserLinks />
         <div className="currentlyreading">
-          <h1>Welcome {this.props.user && this.props.user.first_name}!</h1>
-          <h2 onClick={this.changeFormClicked}>Click Here to Create a New Book Club!</h2>
-          {this.state.formClicked ? this.renderForm() : null}
-          <h2>Books Currently Reading: </h2>
+          <h2 className="secondary-header feed-headings"> &rarr; Welcome {this.props.user && this.props.user.first_name}!</h2>
+          <h2 className="secondary-header feed-headings">Currently Reading</h2>
           <CurrentlyReading />
+          <h2 className="form-option secondary-header feed-headings" onClick={this.changeFormClicked}>Create New Book Club</h2>
+          {this.state.formClicked ? this.renderForm() : null}
         </div>
       </div>
     )

@@ -10,7 +10,7 @@ class UserEventsContainer extends Component {
     return (
       <div>
         <UserLinks />
-        <h2>Your Events!</h2>
+        <h2 className="secondary-header user-tab-headers">Your Book Clubs</h2>
         {clubCards}
       </div>
     )

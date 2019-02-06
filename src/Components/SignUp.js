@@ -14,7 +14,7 @@ class SignUp extends Component {
       <div className="signuppage">
       <div className="signupform">
         <form onSubmit={this.handleSubmit}>
-          <h2>Sign Up</h2>
+          <h2 className="secondary-header">Sign Up</h2>
           <input type="text" name="firstname" placeholder="first name"/><br />
           <input type="text" name="lastname" placeholder="last name"/><br />
           <input type="text" name="city" placeholder="city"/><br />
