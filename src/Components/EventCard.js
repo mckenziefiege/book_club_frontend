@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { changeEvent, updateUser, updateUserFromJoin } from '../Redux/Actions/userActions.js'
+import { changeEvent, updateUser, updateUserFromJoin } from '../Redux/actions.js'
 
 class EventCard extends Component {
 
@@ -48,7 +48,7 @@ class EventCard extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user.auth.currentUser.user
+    user: state.auth.user
   }
 }
 

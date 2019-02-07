@@ -66,10 +66,10 @@ class UserFeed extends Component {
       <div>
         <UserLinks />
         <div className="currentlyreading">
-          <h2 className="secondary-header feed-headings"> &rarr; Welcome {this.props.user && this.props.user.first_name}!</h2>
+          <h2 className="secondary-header feed-headings">&rarr; Welcome {this.props.user && this.props.user.first_name}!</h2>
           <h2 className="secondary-header feed-headings">Currently Reading</h2>
           <CurrentlyReading />
-          <h2 className="form-option secondary-header feed-headings" onClick={this.changeFormClicked}>Create New Book Club</h2>
+          <h2 className="form-option secondary-header feed-headings" onClick={this.changeFormClicked}>&rarr; Create New Book Club</h2>
           {this.state.formClicked ? this.renderForm() : null}
         </div>
       </div>
@@ -79,7 +79,7 @@ class UserFeed extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user.auth.currentUser.user
+    user: state.auth.user
   }
 }
 

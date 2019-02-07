@@ -13,9 +13,8 @@ import UserRead from './Components/UserRead.js'
 import UserEventsContainer from './Components/UserEventsContainer.js'
 import ReviewContainer from './Components/ReviewContainer.js'
 import { connect } from 'react-redux'
-import { setAndFetchUser } from './Redux/Actions/userActions.js'
+import { setAndFetchUser } from './Redux/actions.js'
 import EventPage from './Components/EventPage.js'
-import Footer from './Components/Footer.js'
 
 class App extends Component {
 
@@ -48,19 +47,10 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.user.auth.currentUser.user,
-    read: state.user.books.read,
-    want_to_read: state.user.books.want_to_read,
-    currently_reading: state.user.books.currently_reading
-  }
-}
-
 const mapDispatchToProps = (dispatch) => {
   return {
     setAndFetchUser: (token) => dispatch(setAndFetchUser(token))
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+export default withRouter(connect(null, mapDispatchToProps)(App));

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import UserBookCard from './UserBookCard.js'
 import { connect } from 'react-redux'
 import UserLinks from './UserLinks.js'
-import { updateWantToRead, updateUser } from '../Redux/Actions/userActions.js'
 
 class UserWantToRead extends Component {
   state = {
@@ -11,7 +10,6 @@ class UserWantToRead extends Component {
 
   deleteBook = (obj) => {
     let choosen_user_book = this.props.want_to_read.filter(user_book => user_book.book_id === obj.id)
-    let new_user_books = this.props.want_to_read.filter(user_book => user_book.id !== choosen_user_book.id)
     let id = choosen_user_book[0].id
       fetch(`http://localhost:3000/user_books/${id}`, {
         method: "DELETE"})
@@ -56,7 +54,6 @@ class UserWantToRead extends Component {
   }
 
   render() {
-    console.log(this.state.books)
     let bookCards = this.state.books !== undefined && this.state.books.map(book => <UserBookCard bookObj={book} key={book.id} deleteBook={this.deleteBook}/>)
     return (
       <div>
@@ -78,18 +75,11 @@ class UserWantToRead extends Component {
 
   const mapStateToProps = (state) => {
     return {
-      user: state.user.auth.currentUser.user,
-      read: state.user.books.read,
-      want_to_read: state.user.books.want_to_read,
-      currently_reading: state.user.books.currently_reading
+      user: state.auth.user,
+      read: state.books.read,
+      want_to_read: state.books.want_to_read,
+      currently_reading: state.books.currently_reading
     }
   }
 
-  const mapDispatchToProps = (dispatch) => {
-    return {
-      updateWantToRead: (resp) => dispatch(updateWantToRead(resp)),
-      updateUser: (resp) => dispatch(updateUser(resp))
-    }
-  }
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserWantToRead)
+export default connect(mapStateToProps)(UserWantToRead)

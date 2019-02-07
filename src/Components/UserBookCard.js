@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { updateUserFromFavorite } from '../Redux/Actions/userActions.js'
 
 class UserBookCard extends Component {
   state = {
@@ -130,15 +129,11 @@ class UserBookCard extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user.auth.currentUser.user,
-    read: state.user.books.read,
-    want_to_read: state.user.books.want_to_read,
-    currently_reading: state.user.books.currently_reading
+    user: state.auth.user,
+    read: state.books.read,
+    want_to_read: state.books.want_to_read,
+    currently_reading: state.books.currently_reading
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {updateUserFromFavorite: (resp) => dispatch(updateUserFromFavorite(resp))}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserBookCard)
+export default connect(mapStateToProps)(UserBookCard)

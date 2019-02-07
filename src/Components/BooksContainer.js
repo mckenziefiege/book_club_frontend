@@ -26,9 +26,7 @@ class BooksContainer extends Component {
         {bookCards}
       </div>
     )
-
   }
-
 }
 
 export default BooksContainer

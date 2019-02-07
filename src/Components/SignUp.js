@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { signUpAndFetch } from '../Redux/Actions/userActions.js'
+import { signUpAndFetch } from '../Redux/actions.js'
 import { connect } from 'react-redux'
 
 class SignUp extends Component {
@@ -31,7 +31,7 @@ class SignUp extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {user: state.user.auth.currentUser.user}
+  return {user: state.auth.user}
 }
 
 const mapDispatchToProps = (dispatch) => {

@@ -1,16 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class CommentCard extends Component {
-
-  render() {
+const CommentCard = (props) => {
     return (
       <div className="commentCard">
-        <p>{this.props.commentObj.user.username}</p>
-        <p className="commentdate"> {this.props.commentObj.readable_time} </p>
-        <p>{this.props.commentObj.content}</p>
+        <p>{props.commentObj.user.username}</p>
+        <p className="commentdate"> {props.commentObj.readable_time} </p>
+        <p>{props.commentObj.content}</p>
       </div>
     )
   }
-}
 
 export default CommentCard

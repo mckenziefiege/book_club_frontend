@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { addBookToWantToRead, updateUser } from '../Redux/Actions/userActions.js'
+import { updateUser } from '../Redux/actions.js'
 
 class BookCard extends Component {
 
@@ -43,12 +43,11 @@ class BookCard extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {user: state.user.auth.currentUser.user}
+  return {user: state.auth.user}
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addBookToWantToRead: (resp) => dispatch(addBookToWantToRead(resp)),
     updateUser: (resp) => dispatch(updateUser(resp))
   }
 }

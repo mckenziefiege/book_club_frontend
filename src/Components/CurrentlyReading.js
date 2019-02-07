@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import UserBookCard from './UserBookCard.js'
 import { connect } from 'react-redux'
-import { updateCurrentlyReading } from '../Redux/Actions/userActions.js'
+import { updateCurrentlyReading } from '../Redux/actions.js'
 
 class CurrentlyReading extends Component {
     state = {
@@ -42,10 +42,10 @@ class CurrentlyReading extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user.auth.currentUser.user,
-    read: state.user.books.read,
-    want_to_read: state.user.books.want_to_read,
-    currently_reading: state.user.books.currently_reading
+    user: state.auth.user,
+    read: state.books.read,
+    want_to_read: state.books.want_to_read,
+    currently_reading: state.books.currently_reading
   }
 }
 

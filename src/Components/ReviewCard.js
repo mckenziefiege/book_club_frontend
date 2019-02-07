@@ -11,7 +11,6 @@ class ReviewCard extends Component {
  }
 
   render() {
-
     return (
     <div className="reviewcard">
       <img className="profileimage" alt={this.props.reviewObj.user.username} height="50" src={this.props.reviewObj.user.image}/>
