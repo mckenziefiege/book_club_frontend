@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Lobster');
+/* FONTS AND ICONS */
 @import url('//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css');
 @import url('https://fonts.googleapis.com/css?family=Tajawal');
 @import url('https://fonts.googleapis.com/css?family=Arima+Madurai');
 
-
+/* BASIC HTML SELECTORS */
 * {
   font-family: 'Tajawal', sans-serif;
   font-size: 20px;
@@ -11,16 +11,6 @@
 
 html {
   padding: 20px;
-}
-
-.commentContainer {
-  margin: 5px;
-  padding: 5px;
-}
-
-.filter {
-  padding: 50px;
-  margin-left: 50px;
 }
 
 select {
@@ -31,25 +21,242 @@ select {
   font-family: 'Tajawal', sans-serif;
 }
 
-#commentsubmitbutton {
-  margin-top: 5px;
-  margin-bottom: 5px;
+ul {
+  list-style-type: none;
+   margin: 0;
+   padding: 0;
+   overflow: hidden;
+   margin-top: 20px;
+ }
+
+ li {
+    float: right;
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    margin: 3px;
+    text-transform: uppercase;
+ }
+
+ input {
+   padding: 10px;
+   margin: 10px;
+ }
+
+/* LOGO */
+ .logo {
+   float: left;
+   font-family: 'Arima Madurai', cursive;
+   margin-left: 20px;
+   font-size: 40px;
+   font-weight: bold;
+   text-transform: uppercase;
+   letter-spacing: 5px;
+ }
+
+/* HOME PAGE/ LOGIN AND SIGNUP */
+.loginform, .signupform{
+   padding: 20px;
+   text-align: center;
+   display: inline-block;
+   margin: 50px;
+   padding-left: 80px;
+   padding-right: 80px;
+   background-color: white;
+   font-size: 20px;
+   box-shadow: 0 15px 40px rgba(250, 250, 250, .50);
+   border-radius: 3px;
+ }
+
+.loginpage, .signuppage {
+   background-image: url("https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9731a56510305fd6f05aeaa9d68e41e3&auto=format&fit=crop&w=1650&q=80");
+   background-position: center;
+   background-repeat: no-repeat;
+   height: 100%;
+   background-size: cover;
+   width: 100%;
+   min-height: 100vh;
 }
 
-.feed-headings {
-  margin: 30px;
+.homepage {
+  background-image: url("https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9731a56510305fd6f05aeaa9d68e41e3&auto=format&fit=crop&w=1650&q=80");
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  background-size: cover;
+  width: 100%;
+  min-height: 100vh;
 }
 
-.commentCard {
-  margin: 5px;
-  padding: 5px;
-  box-shadow: 0 25px 25px rgba(0, 0, 0, .15);
+#welcomemessage {
+  padding-top: 50px;
+  text-align: center;
+  color: white;
 }
 
-.commentdate {
-  font-size: 12px;
-}
+ /* USER LINKS AND GREEN NAV BAR */
+ .userlinks {
+   display: inline-block;
+   justify-content: center;
+   padding: 15px;
+   text-transform: uppercase;
+ }
 
+ .container {
+   text-align: center;
+   margin-bottom: 20px;
+   background-color: rgba(196, 211, 199, 0.7);
+   box-shadow: 10px 15px 30px rgba(0, 0, 0, .20);
+   border-radius: 5px;
+ }
+
+ a,a:visited,a:hover,a:active{
+   -webkit-backface-visibility:hidden;
+           backface-visibility:hidden;
+ 	position:relative;
+   transition:0.5s color ease;
+ 	text-decoration:none;
+ 	color:#000000;
+ }
+
+ a:hover {
+ 	color:#000000;
+ }
+
+ a.after:after {
+   content: "";
+   transition:0.5s all ease;
+   -webkit-backface-visibility:hidden;
+           backface-visibility:hidden;
+   position:absolute;
+ }
+
+ a.after:after {
+   bottom:-0.25em;
+   height:1px;
+   height:0.05rem;
+   width:0;
+   background:#000000;
+ }
+
+ a.first:after {
+   left:0;
+ }
+
+ a.after:hover:after{
+   width:100%;
+ }
+
+ /* USER FEED */
+ .secondary-header {
+   text-transform: uppercase;
+   letter-spacing: 5px;
+ }
+
+ .user-tab-headers {
+   margin: 50px;
+ }
+
+ .feed-headings {
+   margin: 30px;
+ }
+
+ .eventForm {
+   padding: 20px;
+ }
+
+ .eventFormInput {
+   margin: 5px;
+ }
+
+ .profileimage {
+   border-radius: 50%;
+   transition: all .2s;
+   box-shadow: 0 20px 40px rgba(0, 0, 0,.2);
+ }
+
+ .profileimage:hover {
+   transform: translateY(-3px);
+   box-shadow: 0 10px 20px rgba(0, 0, 0,.3);
+ }
+
+ /* HTML SELECT ELEMENT FOR FILTERING BOOKS AND CHANGE BOOK CATEGORY */
+ .filter {
+   padding: 50px;
+   margin-left: 50px;
+ }
+
+ /* SEARCH BARS */
+ .searchTerm:focus{
+   color: #000000;
+ }
+
+ .searchbar {
+   margin: 50px;
+   margin-left: 100px;
+   margin-right: 100px;
+ }
+
+ .searchbookcard {
+   margin: 20px;
+   padding: 20px;
+   display: inline-block;
+   max-width: 50;
+   box-shadow: 0 15px 40px rgba(0, 0, 0, .15);
+ }
+
+ .searchbookimage {
+   float: left;
+   padding: 20px;
+ }
+
+ .search {
+   width: 100%;
+   position: relative;
+ }
+
+ .searchTerm {
+   float: left;
+   width: 100%;
+   padding: 20px;
+   border-radius: 5px;
+   color: #353538;
+ }
+
+ /* BUTTONS */
+ .button {
+   padding: 5px;
+   margin: 10px;
+   text-transform: uppercase;
+   font-family: 'Tajawal', sans-serif;
+   box-shadow: 0 15px 20px rgba(0, 0, 0, .15);
+   border-radius: 5px;
+   background-color: white;
+ }
+
+ .button:active {
+ 	box-shadow: inset 0 3px 4px hsla(0, 0%, 0%, 0.2);
+ }
+
+ .button:hover {
+ 	opacity: 0.85;
+ }
+
+ /* EVENT CARDS ON SEARCH PAGE */
+ .searcheventcard {
+   margin: 20px;
+   padding: 30px;
+   display: inline-block;
+   text-align: center;
+   width: 35vw;
+   height: 20vw;
+   justify-content: center;
+   overflow: scroll;
+   box-shadow: 0 15px 40px rgba(0, 0, 0, .15);
+ }
+
+/* EVENT PAGE */
 .eventPageContainer {
   max-height: 100vw;
 }
@@ -68,33 +275,59 @@ select {
   overflow: scroll;
 }
 
-.eventForm {
+/* BOOK CLUB PAGE COMMENT SECTION */
+.commentContainer {
+   margin: 5px;
+   padding: 5px;
+ }
+
+ .commentCard {
+   margin: 5px;
+   padding: 5px;
+   box-shadow: 0 25px 25px rgba(0, 0, 0, .15);
+ }
+
+ .commentdate {
+   font-size: 12px;
+ }
+
+/* REVIEW CARD */
+.reviewcard {
+  margin: 30px;
   padding: 20px;
+  max-width: 80vw;
+  margin-bottom: 30px;
+  display: block;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, .15);
 }
 
-.eventFormInput {
-  margin: 5px;
+/* BOOK CARDS */
+.userbookcard {
+  margin: 20px;
+  padding: 30px;
+  display: inline-block;
+  text-align: center;
+  width: 40vw;
+  height: 25vw;
+  justify-content: center;
+  overflow: scroll;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, .15);
+  transition: all .4s;
 }
 
-.backgroundphoto {
-  background-image: url('https://images.unsplash.com/photo-1507738978512-35798112892c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=81010823b449bfb0f874f6c8d71a5df7&auto=format&fit=crop&w=1350&q=80');
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100%;
-  background-size: cover;
-  width: 100%;
-  min-height: 100vh;
+.userbookcard:hover {
+  transform: translateY(-10px) scale(1.03);
 }
 
-.errormessage {
-  margin-top: 250px;
-  margin-left: 50px;
+.cardimage {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, .15);
 }
 
-.user-tab-headers {
-  margin: 50px;
+.cardimage:hover {
+  cursor: pointer;
 }
 
+/* INPUT FIELDS BOOK CARDS */
 .reviewform {
   padding: 20px;
 }
@@ -104,327 +337,12 @@ select {
   float: left;
 }
 
-.button:hover {
-	opacity: 0.85;
-}
-
-.categoryselect {
-  font-size: 15px;
-  padding: 20px;
-  position: relative;
-}
-
-.button:active {
-	box-shadow: inset 0 3px 4px hsla(0, 0%, 0%, 0.2);
-}
-
-.button:focus {
-	outline: thin dotted #444;
-	outline: 5px auto -webkit-focus-ring-color;
-	outline-offset: -2px;
-}
-
-.button_primary {
-	background-color: #1fa3ec;
-}
-
-.button_secondary {
-	background-color: #e98724;
-}
-
-.button-icon {
-	display: inline-block;
-  position: relative;
-  top: -0.1em;
-  vertical-align: middle;
-	margin-right: 0.317rem;
-}
-
-ul {
-  list-style-type: none;
-   margin: 0;
-   padding: 0;
-   overflow: hidden;
-   margin-top: 20px;
- }
-
- .checked {
-    color: orange;
-}
-
- li {
-    float: right;
-    display: block;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    margin: 3px;
-    text-transform: uppercase;
- }
-
- .logo {
-   float: left;
-   font-family: 'Arima Madurai', cursive;
-   margin-left: 20px;
-   font-size: 40px;
-   font-weight: bold;
-   text-transform: uppercase;
-   letter-spacing: 5px;
- }
-
-  .reviewcard {
-    margin: 30px;
-    padding: 20px;
-    max-width: 80vw;
-    margin-bottom: 30px;
-    display: block;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, .15);
- }
-
- .userbookcard {
-   margin: 20px;
-   padding: 30px;
-   display: inline-block;
-   text-align: center;
-   width: 40vw;
-   height: 25vw;
-   justify-content: center;
-   overflow: scroll;
-   box-shadow: 0 15px 40px rgba(0, 0, 0, .15);
-   transition: all .4s;
- }
-
- .userbookcard:hover {
-   transform: translateY(-10px) scale(1.03);
- }
-
- .searcheventcard {
-   margin: 20px;
-   padding: 30px;
-   display: inline-block;
-   text-align: center;
-   width: 35vw;
-   height: 20vw;
-   justify-content: center;
-   overflow: scroll;
-   box-shadow: 0 15px 40px rgba(0, 0, 0, .15);
- }
-
- .cardimage {
-   box-shadow: 0 15px 40px rgba(0, 0, 0, .15);
- }
-
- .cardimage:hover {
-   cursor: pointer;
- }
-
- .loginform, .signupform{
-   padding: 20px;
-   text-align: center;
-   display: inline-block;
-   margin: 50px;
-   padding-left: 80px;
-   padding-right: 80px;
-   background-color: white;
-   font-size: 20px;
-   box-shadow: 0 15px 40px rgba(250, 250, 250, .50);
-   border-radius: 3px;
- }
-
- .secondary-header {
-   text-transform: uppercase;
-   letter-spacing: 5px;
- }
-
-.form-option {
-  display: block;
-}
-
- input {
-   padding: 10px;
-   margin: 10px;
- }
-
- #welcomemessage {
-   padding-top: 50px;
-   text-align: center;
-   color: white;
- }
-
- .homepage {
-   background-image: url("https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9731a56510305fd6f05aeaa9d68e41e3&auto=format&fit=crop&w=1650&q=80");
-   background-position: center;
-   background-repeat: no-repeat;
-   height: 100%;
-   background-size: cover;
-   width: 100%;
-   min-height: 100vh;
- }
-
- .loginpage, .signuppage {
-   background-image: url("https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9731a56510305fd6f05aeaa9d68e41e3&auto=format&fit=crop&w=1650&q=80");
-   background-position: center;
-   background-repeat: no-repeat;
-   height: 100%;
-   background-size: cover;
-   width: 100%;
-   min-height: 100vh;
-}
-
-.profileimage {
-  border-radius: 50%;
-  transition: all .2s;
-  box-shadow: 0 20px 40px rgba(0, 0, 0,.2);
-}
-
-.profileimage:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0,.3);
-}
-
-.userlinks {
-  display: inline-block;
-  justify-content: center;
-  padding: 15px;
-  text-transform: uppercase;
-}
-
-.container {
-  text-align: center;
-  margin-bottom: 20px;
-  background-color: rgba(196, 211, 199, 0.7);
-  box-shadow: 10px 15px 30px rgba(0, 0, 0, .20);
-  border-radius: 5px;
-
-}
-
-a,a:visited,a:hover,a:active{
-  -webkit-backface-visibility:hidden;
-          backface-visibility:hidden;
-	position:relative;
-  transition:0.5s color ease;
-	text-decoration:none;
-	color:#000000;
-}
-a:hover{
-	color:#000000;
-}
-a.before:before,a.after:after{
-  content: "";
-  transition:0.5s all ease;
-  -webkit-backface-visibility:hidden;
-          backface-visibility:hidden;
-  position:absolute;
-}
-a.before:before{
-  top:-0.25em;
-}
-a.after:after{
-  bottom:-0.25em;
-}
-a.before:before,a.after:after{
-  height:1px;
-  height:0.05rem;
-  width:0;
-  background:#000000;
-}
-a.first:after{
-  left:0;
-}
-a.second:after{
-  right:0;
-}
-
-a.before:hover:before,a.after:hover:after{
-  width:100%;
-}
-
-.square:before,.square:after{
-  content: "";
-  box-sizing:border-box;
-  transition:0.25s all ease;
-  -webkit-backface-visibility:hidden;
-          backface-visibility:hidden;
-  position:absolute;
-  width:5px;
-  width:0.35rem;
-  height:0;
-  background:#000000;
-}
-
-.square:after{
-  right:0;
-  top:-0.2em;
-}
-.square.individual:after{
-  transition-delay:0.2s;
-}
-
-.square a:after{
-  right:0;
-  transition:0.25s all ease;
-}
-
-.square.individual a:after{
-  transition:0.25s all ease 0.4s;
-}
-.square:hover:before,.square:hover:after{
-  height:calc(100% + 0.4em);
-}
-.square:hover a:before,.square:hover a:after{
-  width:100%;
-}
-
-.search {
-  width: 100%;
-  position: relative;
-}
-
-.searchTerm {
-  float: left;
-  width: 100%;
-  padding: 20px;
-  border-radius: 5px;
-  color: #353538;
-}
-
+/* FAVORITE BOOK HEART ICON */
 .fas:hover, .fa-heart:hover {
   cursor: pointer;
 }
 
-.searchTerm:focus{
-  color: #000000;
-}
-
-.searchbar {
-  margin: 50px;
-  margin-left: 100px;
-  margin-right: 100px;
-}
-
-.searchbookcard {
-  margin: 20px;
-  padding: 20px;
-  display: inline-block;
-  max-width: 50;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, .15);
-}
-
-.searchbookimage {
-  float: left;
-  padding: 20px;
-}
-
-.button {
-  padding: 5px;
-  margin: 10px;
-  text-transform: uppercase;
-  font-family: 'Tajawal', sans-serif;
-  box-shadow: 0 15px 20px rgba(0, 0, 0, .15);
-  border-radius: 5px;
-  background-color: white;
-}
-
+/* STAR RATINGS ON BOOK CARDS */
 .rating {
   border: none;
   float: left;
@@ -449,7 +367,6 @@ a.before:hover:before,a.after:hover:after{
  float: right;
 }
 
-/***** Highlight Stars on Hover *****/
 .rating > input:checked ~ label, /* show gold star when clicked */
 .rating:not(:checked) > label:hover, /* hover current star */
 .rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
@@ -459,6 +376,11 @@ a.before:hover:before,a.after:hover:after{
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
 .rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
 
+.checked {
+  color: orange;
+}
+
+/* FOOTER */
 .footer {
   background-color: rgba(196, 211, 199, 0.7);
   padding: 20px;
