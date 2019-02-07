@@ -22,7 +22,7 @@ class SignUp extends Component {
           <input type="text" name="image" placeholder="profile image url"/><br />
           <input type="text" name="username" placeholder="username"/><br />
           <input type="text" name="password" placeholder="password"/><br />
-          <input type="Submit" placeholder="Username"/>
+          <input className="button" type="Submit" placeholder="Username"/>
         </form>
       </div>
       </div>
