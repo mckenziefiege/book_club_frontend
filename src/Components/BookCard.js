@@ -36,7 +36,7 @@ class BookCard extends Component {
         <p> {this.props.bookObj.volumeInfo.title} </p>
         <p> {this.props.bookObj.volumeInfo.authors} </p>
         <p> {this.props.bookObj.volumeInfo.description} </p>
-        <button className="button" onClick={(e) => this.addBookToList(e, this.props.bookObj)}> ADD </button>
+        <button className="button" onClick={(e) => this.addBookToList(e, this.props.bookObj)}>ADD BOOK</button>
       </div>
     )
   }

@@ -17,7 +17,6 @@ import { setAndFetchUser } from './Redux/Actions/userActions.js'
 import EventPage from './Components/EventPage.js'
 import Footer from './Components/Footer.js'
 
-
 class App extends Component {
 
   componentDidMount () {
@@ -44,7 +43,6 @@ class App extends Component {
           <Route path='/event-page' component={EventPage} />
           <Route path="/" component={HomePage} />
         </Switch>
-        <Footer />
       </div>
     );
   }

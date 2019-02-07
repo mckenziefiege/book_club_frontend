@@ -18,7 +18,7 @@ class Login extends Component {
         <form onSubmit={this.handleSubmit}>
           <input type="text" name="username" placeholder="username"/><br />
           <input type="password" name="password" placeholder="password"/><br />
-          <input type="Submit" placeholder="Username"/>
+          <input className="button" type="Submit" placeholder="Username"/>
         </form>
     </div> )
   }
