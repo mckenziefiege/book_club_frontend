@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { logoutUser } from '../Redux/Actions/userActions.js'
+import { logoutUser } from '../Redux/actions.js'
 import { withRouter } from "react-router-dom"
 
 class Logout extends Component {
@@ -22,7 +22,7 @@ class Logout extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user.auth.currentUser.user
+    user: state.auth.user
   }
 }
 

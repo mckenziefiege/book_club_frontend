@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import CommentCard from './CommentCard.js'
 
 class CommentsContainer extends Component {
-
   state = {
     comments: []
   }
@@ -36,11 +35,11 @@ class CommentsContainer extends Component {
     let commentCards = this.state.comments ? this.state.comments.map(comment => <CommentCard commentObj={comment} key={comment.id}/>) : null
     return (
       <div className="commentContainer">
-      <form onSubmit={this.postComment}>
-      <textarea rows="3" cols="90" type="text" name="content" placeholder="Write something..."></textarea><br />
-      <input className="button" type="submit"/>
-      </form>
-      {commentCards}
+        <form onSubmit={this.postComment}>
+          <textarea rows="3" cols="90" type="text" name="content" placeholder="Write something..."></textarea><br />
+          <input className="button" type="submit"/>
+        </form>
+        {commentCards}
       </div>
     )
   }
@@ -48,8 +47,8 @@ class CommentsContainer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user.auth.currentUser.user,
-    club: state.user.club
+    user: state.auth.user,
+    club: state.club
   }
 }
 
