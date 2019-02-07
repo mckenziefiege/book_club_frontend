@@ -81,7 +81,6 @@ class UserBookCard extends Component {
         <form onSubmit={(e) => this.handleSubmit(e)}>
           <div className="inputfieldsreview"><input type="text" name="title" placeholder="Review Title"/><br /></div>
           <div className="inputfieldsreview"><textarea rows="4" cols="50" type="text" name="content" placeholder="Review content..."></textarea></div>
-
             <fieldset className="rating">
               <input type="radio" id="star5" name="rating" value="5" /><label className = "full" htmlFor="star5" title="Awesome - 5 stars"></label>
               <input type="radio" id="star4half" name="rating" value="4" /><label className="half" htmlFor="star4half" title="Pretty good - 4.5 stars"></label>
@@ -93,7 +92,6 @@ class UserBookCard extends Component {
               <input type="radio" id="star1half" name="rating" value="1" /><label className="half" htmlFor="star1half" title="Meh - 1.5 stars"></label>
               <input type="radio" id="star1" name="rating" value="1" /><label className = "full" htmlFor="star1" title="Sucks big time - 1 star"></label>
             </fieldset>
-
             <input type="hidden" name="userid" value={this.props.user.id}/><br />
             <input type="hidden" name="bookid" value={this.props.bookObj.id}/><br />
             <input className="button" type="submit"/>
@@ -108,7 +106,6 @@ class UserBookCard extends Component {
         <img className="cardimage" onClick={this.handleClickedImage} alt={this.props.bookObj.title} src={this.props.bookObj.image}/>
         <h4>{this.props.bookObj.title}</h4>
         <div>{this.state.favorited === true ? <i onClick={() => this.changeFavorited(this.props.bookObj)} className="fas fa-heart"></i> : <i onClick={() => this.changeFavorited(this.props.bookObj)} className="far fa-heart"></i>}</div>
-
         {this.state.clicked &&
           <div>
             <p>{this.props.bookObj.author}</p>
@@ -117,15 +114,14 @@ class UserBookCard extends Component {
             <button className="button" onClick={this.handleReviewClicked}>Leave a Review</button>
             <button className="button" onClick={this.changeCategory}>Change Category</button>
             {this.state.categoryForm && <form onSubmit={(e) => this.handleChangeCategory(e, this.props.bookObj)}>
-            <select className="categoryselect" name="category" >
+            <select className="filter" name="category" >
               <option value="read">Read</option>
               <option value="want to read">Want to Read</option>
               <option value="currently reading">Currently Reading</option>
             </select>
             <input className="button" type="submit" value="Submit" />
             </form>}
-
-            <div className="reviewformdiv">{this.state.reviewForm ? this.renderReviewForm() : null}</div>
+            <div>{this.state.reviewForm ? this.renderReviewForm() : null}</div>
           </div>}
       </div>
     )

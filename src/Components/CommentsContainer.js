@@ -38,7 +38,7 @@ class CommentsContainer extends Component {
       <div className="commentContainer">
       <form onSubmit={this.postComment}>
       <textarea rows="3" cols="90" type="text" name="content" placeholder="Write something..."></textarea><br />
-      <input className="button" id="commentsubmitbutton" type="submit"/>
+      <input className="button" type="submit"/>
       </form>
       {commentCards}
       </div>
