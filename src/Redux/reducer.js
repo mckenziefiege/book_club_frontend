@@ -70,14 +70,6 @@ const reducer = (state = initialState, action) => {
       return {...state, currently_reading: action.payload}
     }
 
-    case('UPDATE_WANT_TO_READ'): {
-      return {...state, want_to_read: action.payload}
-    }
-
-    case('UPDATE_READ'): {
-      return {...state, read: action.payload}
-    }
-
     case('ADD_BOOK_TO_WANT_TO_READ'): {
       return {...state, want_to_read: [...state.books.want_to_read, action.payload]}
     }

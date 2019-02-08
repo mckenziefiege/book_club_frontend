@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import UserBookCard from './UserBookCard.js'
 import { connect } from 'react-redux'
 import UserLinks from './UserLinks.js'
-import { updateRead, updateBookObjs } from '../Redux/actions.js'
+import { updateUserFromFetch, updateBookObjs } from '../Redux/actions.js'
 
 class UserRead extends Component {
 
   componentDidMount () {
+    this.getIdsFromUser()
+  }
+
+  getIdsFromUser = () => {
     const ids = this.props.user && this.props.read.map(user_book => user_book.book_id)
     let bookObjs = this.props.user && this.props.user.books.filter(book => ids.includes(book.id))
     this.props.updateBooks(bookObjs)
@@ -14,17 +18,17 @@ class UserRead extends Component {
 
   deleteBook = (obj) => {
     let choosen_user_book = this.props.read.filter(user_book => user_book.book_id === obj.id)
-    let new_user_books = this.props.read.filter(user_book => user_book.id !== choosen_user_book.id)
     let id = choosen_user_book[0].id
       fetch(`http://localhost:3000/user_books/${id}`, {
         method: "DELETE"})
         .then(resp => resp.json())
-        .then(resp => this.props.updateRead(new_user_books))
-        let new_books = this.state.books.filter(book => book.id !== obj.id)
-      this.setState({
-        books: new_books
-      })
+        .then(resp => {
+          this.props.updateUserFromFetch(resp)
+          this.getIdsFromUser()
+        }
+      )
     }
+
 
   handleFilter = (e) => {
     e.preventDefault()
@@ -77,8 +81,8 @@ class UserRead extends Component {
 
   const mapDispatchToProps = (dispatch) => {
     return {
-      updateRead: (resp) => dispatch(updateRead(resp)),
-      updateBooks: (books) => dispatch(updateBookObjs(books))
+      updateBooks: (books) => dispatch(updateBookObjs(books)),
+      updateUserFromFetch: (user) => dispatch(updateUserFromFetch(user))
     }
   }
 
