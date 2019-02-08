@@ -4,6 +4,7 @@ export const getCurrentUser = (user) => ({type: 'GET_CURRENT_USER', payload: {us
 export const changeCreateEventForm = () => ({type: 'CHANGE_CREATE_EVENT_FORM'})
 export const changeSearchTerm = (letter) => ({type: 'CHANGE_SEARCH_TERM', payload: letter})
 export const updateBookObjs = (books) => ({type: 'UPDATE_BOOK_OBJS', payload: books})
+export const updateUserFromFetch = (user) => ({type: 'UPDATE_USER_FROM_FETCH', payload: user})
 
 
 
