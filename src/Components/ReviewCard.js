@@ -5,7 +5,7 @@ class ReviewCard extends Component {
   renderStars() {
     const stars = []
       for (let i = 0; i < this.props.reviewObj.rating; i ++) {
-      stars.push(<span className="fa fa-star checked"></span>);
+      stars.push(<span key={i} className="fa fa-star checked"></span>);
     }
     return stars
  }

@@ -3,21 +3,27 @@ import { connect } from 'react-redux'
 
 class UserBookCard extends Component {
   state = {
-    clicked: false,
-    reviewForm: false,
-    categoryForm: false,
+    bookCardClicked: false,
+    reviewFormClicked: false,
+    categoryFormClicked: false,
     favorited: this.props.bookObj.favorited
   }
 
   handleClickedImage = () => {
     this.setState({
-      clicked: !this.state.clicked
+      bookCardClicked: !this.state.bookCardClicked
     })
   }
 
   handleReviewClicked = () => {
     this.setState({
-      reviewForm: !this.state.reviewForm
+      reviewFormClicked: !this.state.reviewFormClicked
+    })
+  }
+
+  changeCategory = () => {
+    this.setState({
+      categoryFormClicked: !this.state.categoryFormClicked
     })
   }
 
@@ -36,12 +42,6 @@ class UserBookCard extends Component {
   }
   fetch('http://localhost:3000/reviews', options)
 }
-
-  changeCategory = () => {
-    this.setState({
-      categoryForm: !this.state.categoryForm
-    })
-  }
 
   handleChangeCategory = (e, book) => {
     e.preventDefault()
@@ -102,26 +102,29 @@ class UserBookCard extends Component {
   render() {
     return (
       <div className="userbookcard">
-        <img className="cardimage" onClick={this.handleClickedImage} alt={this.props.bookObj.title} src={this.props.bookObj.image}/>
+        <img className="cardimage" onClick={() => this.handleClickedImage()} alt={this.props.bookObj.title} src={this.props.bookObj.image}/>
         <h4>{this.props.bookObj.title}</h4>
         <div>{this.state.favorited === true ? <i onClick={() => this.changeFavorited(this.props.bookObj)} className="fas fa-heart"></i> : <i onClick={() => this.changeFavorited(this.props.bookObj)} className="far fa-heart"></i>}</div>
-        {this.state.clicked &&
+          {this.state.bookCardClicked &&
           <div>
             <p>{this.props.bookObj.author}</p>
             <p>{this.props.bookObj.description}</p>
             <button className="button" onClick={() => this.props.deleteBook(this.props.bookObj)}>Delete Book</button>
             <button className="button" onClick={this.handleReviewClicked}>Leave a Review</button>
             <button className="button" onClick={this.changeCategory}>Change Category</button>
-            {this.state.categoryForm && <form onSubmit={(e) => this.handleChangeCategory(e, this.props.bookObj)}>
-            <select className="filter" name="category" >
-              <option value="read">Read</option>
-              <option value="want to read">Want to Read</option>
-              <option value="currently reading">Currently Reading</option>
-            </select>
-            <input className="button" type="submit" value="Submit" />
-            </form>}
-            <div>{this.state.reviewForm ? this.renderReviewForm() : null}</div>
-          </div>}
+            {this.state.categoryFormClicked &&
+              <form onSubmit={(e) => this.handleChangeCategory(e, this.props.bookObj)}>
+                <select className="filter" name="category" >
+                  <option value="read">Read</option>
+                  <option value="want to read">Want to Read</option>
+                  <option value="currently reading">Currently Reading</option>
+                </select>
+                <input className="button" type="submit" value="Submit" />
+              </form>}
+            <div>
+              {this.state.reviewFormClicked ? this.renderReviewForm() : null}
+            </div>
+        </div>}
       </div>
     )
   }
@@ -132,7 +135,7 @@ const mapStateToProps = (state) => {
     user: state.auth.user,
     read: state.books.read,
     want_to_read: state.books.want_to_read,
-    currently_reading: state.books.currently_reading
+    currently_reading: state.books.currently_reading,
   }
 }
 

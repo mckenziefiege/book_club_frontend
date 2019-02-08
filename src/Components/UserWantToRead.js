@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import UserBookCard from './UserBookCard.js'
 import { connect } from 'react-redux'
 import UserLinks from './UserLinks.js'
+import { updateBookObjs } from '../Redux/actions.js'
 
 class UserWantToRead extends Component {
-  state = {
-    books: []
+
+  componentDidMount () {
+    const ids = this.props.user && this.props.want_to_read.map(user_book => user_book.book_id)
+    let bookObjs = this.props.user && this.props.user.books.filter(book => ids.includes(book.id))
+    this.props.updateBooks(bookObjs)
   }
 
   deleteBook = (obj) => {
@@ -21,40 +25,30 @@ class UserWantToRead extends Component {
       })
     }
 
-  componentDidMount () {
-    const ids = this.props.user && this.props.want_to_read.map(user_book => user_book.book_id)
-    let bookObjs = this.props.user && this.props.user.books.filter(book => ids.includes(book.id))
-    this.setState({
-      books: bookObjs
-    })
-  }
-
   handleFilter = (e) => {
     e.preventDefault()
     if (e.target.filter.value === 'A-Z') {
-      let new_books = this.state.books.sort(function(a, b) {
+      let books = this.props.bookObjs.sort(function(a, b) {
         return a.title.localeCompare(b.title);
       })
-      this.setState({
-        books: new_books
-      })
+      let update = [...books]
+      this.props.updateBooks(update)
     } else if (e.target.filter.value === 'Z-A') {
-        let new_books = this.state.books.sort(function(a, b) {
+        let books = this.props.bookObjs.sort(function(a, b) {
           return b.title.localeCompare(a.title);
       })
-      this.setState({
-        books: new_books
-      })
+      let update = [...books]
+      this.props.updateBooks(update)
     } else if (e.target.filter.value === 'Favorites') {
-      let new_books = this.state.books.filter(book => book.favorited === true)
-      this.setState({
-        books: new_books
-      })
+      let books = this.props.bookObjs.filter(book => book.favorited === true)
+      let update = [...books]
+      this.props.updateBooks(update)
     }
   }
 
   render() {
-    let bookCards = this.state.books !== undefined && this.state.books.map(book => <UserBookCard bookObj={book} key={book.id} deleteBook={this.deleteBook}/>)
+    console.log(this.props)
+    let bookCards = this.props.bookObjs !== undefined && this.props.bookObjs.map(book => <UserBookCard bookObj={book} key={book.id} deleteBook={this.deleteBook}/>)
     return (
       <div>
         <UserLinks />
@@ -76,10 +70,15 @@ class UserWantToRead extends Component {
   const mapStateToProps = (state) => {
     return {
       user: state.auth.user,
-      read: state.books.read,
       want_to_read: state.books.want_to_read,
-      currently_reading: state.books.currently_reading
+      bookObjs: state.bookObjs
     }
   }
 
-export default connect(mapStateToProps)(UserWantToRead)
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      updateBooks: (books) => dispatch(updateBookObjs(books))
+    }
+  }
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserWantToRead)

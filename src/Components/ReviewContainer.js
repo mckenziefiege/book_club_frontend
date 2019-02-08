@@ -20,7 +20,7 @@ class ReviewContainer extends Component {
   }
 
   render() {
-    let reviewCards = this.state.reviews.map(review => <ReviewCard key={review.id} reviewObj={review}/>)
+    let reviewCards = this.state.reviews.map(review => <ReviewCard key={review.id} reviewObj={review} />)
     return (
     <div>
       <UserLinks />

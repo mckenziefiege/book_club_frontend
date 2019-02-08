@@ -1,8 +1,11 @@
 export const handleLogin = (user) => ({type: 'HANDLE_LOGIN', payload: {user}})
-
 export const logoutUser = () => ({type: 'HANDLE_LOGOUT'})
-
 export const getCurrentUser = (user) => ({type: 'GET_CURRENT_USER', payload: {user}})
+export const changeCreateEventForm = () => ({type: 'CHANGE_CREATE_EVENT_FORM'})
+export const changeSearchTerm = (letter) => ({type: 'CHANGE_SEARCH_TERM', payload: letter})
+export const updateBookObjs = (books) => ({type: 'UPDATE_BOOK_OBJS', payload: books})
+
+
 
 export const updateCurrentlyReading = (book) => ({type: 'UPDATE_CURRENTLY_READING', payload: {book}})
 

@@ -5,7 +5,10 @@ const initialState = {
     wantToRead: [],
     currentlyReading: []
   },
-  club: {}
+  club: {},
+  createEventForm: false,
+  searchTerm: "",
+  bookObjs: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -17,7 +20,6 @@ const reducer = (state = initialState, action) => {
         currently_reading: action.payload.user.currently_reading}
       }
     }
-
     case('HANDLE_LOGOUT'): {
       return {...state, auth: {},
         books: {
@@ -27,7 +29,6 @@ const reducer = (state = initialState, action) => {
           }
         }
       }
-
     case('GET_CURRENT_USER'): {
       return {...state, auth: action.payload,
          books: {
@@ -37,11 +38,31 @@ const reducer = (state = initialState, action) => {
           }
         }
       }
+    case('CHANGE_CREATE_EVENT_FORM'): {
+      return { ...state,
+        createEventForm: !state.createEventForm
+      }
+    }
+    case('CHANGE_SEARCH_TERM'): {
+      return { ...state,
+        searchTerm: action.payload
+      }
+    }
+    case('UPDATE_BOOK_OBJS'): {
+      console.log('hellllllo')
+      return { ...state,
+        bookObjs: action.payload
+      }
+    }
+
+
+
+
 
     case('UPDATE_CURRENTLY_READING'): {
       return {...state, currently_reading: action.payload}
     }
-    
+
     case('UPDATE_WANT_TO_READ'): {
       return {...state, want_to_read: action.payload}
     }
