@@ -2,61 +2,57 @@ import React, { Component } from 'react';
 import UserBookCard from './UserBookCard.js'
 import { connect } from 'react-redux'
 import UserLinks from './UserLinks.js'
-import { updateRead } from '../Redux/actions.js'
+import { updateUserFromFetch, updateBookObjs } from '../Redux/actions.js'
 
 class UserRead extends Component {
-  state = {
-    books: []
+
+  componentDidMount () {
+    this.getIdsFromUser()
+  }
+
+  getIdsFromUser = () => {
+    const ids = this.props.user && this.props.read.map(user_book => user_book.book_id)
+    let bookObjs = this.props.user && this.props.user.books.filter(book => ids.includes(book.id))
+    this.props.updateBooks(bookObjs)
   }
 
   deleteBook = (obj) => {
     let choosen_user_book = this.props.read.filter(user_book => user_book.book_id === obj.id)
-    let new_user_books = this.props.read.filter(user_book => user_book.id !== choosen_user_book.id)
     let id = choosen_user_book[0].id
       fetch(`http://localhost:3000/user_books/${id}`, {
         method: "DELETE"})
         .then(resp => resp.json())
-        .then(resp => this.props.updateRead(new_user_books))
-        let new_books = this.state.books.filter(book => book.id !== obj.id)
-      this.setState({
-        books: new_books
-      })
+        .then(resp => {
+          this.props.updateUserFromFetch(resp)
+          this.getIdsFromUser()
+        }
+      )
     }
 
-  componentDidMount () {
-    const ids = this.props.user && this.props.read.map(user_book => user_book.book_id)
-    let bookObjs = this.props.user && this.props.user.books.filter(book => ids.includes(book.id))
-    this.setState({
-      books: bookObjs
-    })
-  }
 
   handleFilter = (e) => {
     e.preventDefault()
     if (e.target.filter.value === 'A-Z') {
-      let new_books = this.state.books.sort(function(a, b) {
-        return a.title.localeCompare(b.title);
-      })
-      this.setState({
-        books: new_books
-      })
+      let books = this.props.bookObjs.sort(function(a, b) {
+      return a.title.localeCompare(b.title);
+    })
+      let update = [...books]
+      this.props.updateBooks(update)
     } else if (e.target.filter.value === 'Z-A') {
-        let new_books = this.state.books.sort(function(a, b) {
-          return b.title.localeCompare(a.title);
-      })
-      this.setState({
-        books: new_books
-      })
+        let books = this.props.bookObjs.sort(function(a, b) {
+        return b.title.localeCompare(a.title);
+    })
+      let update = [...books]
+      this.props.updateBooks(update)
     } else if (e.target.filter.value === 'Favorites') {
-      let new_books = this.state.books.filter(book => book.favorited === true)
-      this.setState({
-        books: new_books
-      })
+      let books = this.props.bookObjs.filter(book => book.favorited === true)
+      let update = [...books]
+      this.props.updateBooks(update)
     }
   }
 
   render() {
-    let bookCards = this.state.books !== undefined && this.state.books.map(book => <UserBookCard bookObj={book} key={book.id} deleteBook={this.deleteBook}/>)
+    let bookCards = this.props.bookObjs !== undefined && this.props.bookObjs.map(book => <UserBookCard bookObj={book} key={book.id} deleteBook={this.deleteBook}/>)
     return (
       <div>
         <UserLinks />
@@ -79,14 +75,14 @@ class UserRead extends Component {
     return {
       user: state.auth.user,
       read: state.books.read,
-      want_to_read: state.books.want_to_read,
-      currently_reading: state.books.currently_reading
+      bookObjs: state.bookObjs
     }
   }
 
   const mapDispatchToProps = (dispatch) => {
     return {
-      updateRead: (resp) => dispatch(updateRead(resp))
+      updateBooks: (books) => dispatch(updateBookObjs(books)),
+      updateUserFromFetch: (user) => dispatch(updateUserFromFetch(user))
     }
   }
 

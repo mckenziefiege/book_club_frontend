@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import UserBookCard from './UserBookCard.js'
 import { connect } from 'react-redux'
 import UserLinks from './UserLinks.js'
-import { updateBookObjs } from '../Redux/actions.js'
+import { updateBookObjs, updateUserFromFetch } from '../Redux/actions.js'
 
 class UserWantToRead extends Component {
 
   componentDidMount () {
+    this.getIdsFromUser()
+  }
+
+  getIdsFromUser = () => {
     const ids = this.props.user && this.props.want_to_read.map(user_book => user_book.book_id)
     let bookObjs = this.props.user && this.props.user.books.filter(book => ids.includes(book.id))
     this.props.updateBooks(bookObjs)
@@ -18,11 +22,11 @@ class UserWantToRead extends Component {
       fetch(`http://localhost:3000/user_books/${id}`, {
         method: "DELETE"})
         .then(resp => resp.json())
-        .then(resp => console.log(resp))
-        let new_books = this.state.books.filter(book => book.id !== obj.id)
-      this.setState({
-        books: new_books
-      })
+        .then(resp => {
+          this.props.updateUserFromFetch(resp)
+          this.getIdsFromUser()
+        }
+      )
     }
 
   handleFilter = (e) => {
@@ -47,19 +51,18 @@ class UserWantToRead extends Component {
   }
 
   render() {
-    console.log(this.props)
     let bookCards = this.props.bookObjs !== undefined && this.props.bookObjs.map(book => <UserBookCard bookObj={book} key={book.id} deleteBook={this.deleteBook}/>)
     return (
       <div>
         <UserLinks />
         <h2 className="secondary-header user-tab-headers">Books To Read</h2>
         <form onSubmit={(e) => this.handleFilter(e)}>
-        <select className="filter" name="filter" >
-          <option name="filter" value="A-Z">A-Z</option>
-          <option name="filter" value="Z-A">Z-A</option>
-          <option name="filter" value="Favorites">Favorites</option>
-        </select>
-        <input className="button" type="submit" />
+          <select className="filter" name="filter" >
+            <option name="filter" value="A-Z">A-Z</option>
+            <option name="filter" value="Z-A">Z-A</option>
+            <option name="filter" value="Favorites">Favorites</option>
+          </select>
+          <input className="button" type="submit" />
         </form>
         {bookCards}
       </div>
@@ -77,7 +80,8 @@ class UserWantToRead extends Component {
 
   const mapDispatchToProps = (dispatch) => {
     return {
-      updateBooks: (books) => dispatch(updateBookObjs(books))
+      updateBooks: (books) => dispatch(updateBookObjs(books)),
+      updateUserFromFetch: (user) => dispatch(updateUserFromFetch(user))
     }
   }
 

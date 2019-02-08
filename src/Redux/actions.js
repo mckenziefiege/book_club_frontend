@@ -4,14 +4,11 @@ export const getCurrentUser = (user) => ({type: 'GET_CURRENT_USER', payload: {us
 export const changeCreateEventForm = () => ({type: 'CHANGE_CREATE_EVENT_FORM'})
 export const changeSearchTerm = (letter) => ({type: 'CHANGE_SEARCH_TERM', payload: letter})
 export const updateBookObjs = (books) => ({type: 'UPDATE_BOOK_OBJS', payload: books})
+export const updateUserFromFetch = (user) => ({type: 'UPDATE_USER_FROM_FETCH', payload: user})
 
 
 
 export const updateCurrentlyReading = (book) => ({type: 'UPDATE_CURRENTLY_READING', payload: {book}})
-
-export const updateWantToRead = (book) => ({type: 'UPDATE_WANT_TO_READ', payload: {book}})
-
-export const updateRead = (book) => ({type: 'UPDATE_READ', payload: {book}})
 
 export const addBookToWantToRead = (book) => ({type: 'ADD_BOOK_TO_WANT_TO_READ', payload: {book}})
 

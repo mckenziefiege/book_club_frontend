@@ -54,6 +54,13 @@ const reducer = (state = initialState, action) => {
         bookObjs: action.payload
       }
     }
+    case('UPDATE_USER_FROM_FETCH'): {
+      return {...state,
+        auth: {
+          user: action.payload
+      }
+    }
+  }
 
 
 
@@ -61,14 +68,6 @@ const reducer = (state = initialState, action) => {
 
     case('UPDATE_CURRENTLY_READING'): {
       return {...state, currently_reading: action.payload}
-    }
-
-    case('UPDATE_WANT_TO_READ'): {
-      return {...state, want_to_read: action.payload}
-    }
-
-    case('UPDATE_READ'): {
-      return {...state, read: action.payload}
     }
 
     case('ADD_BOOK_TO_WANT_TO_READ'): {
