@@ -26,6 +26,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <NavBar />
@@ -47,10 +48,16 @@ class App extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    user: state.auth.user
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     setAndFetchUser: (token) => dispatch(setAndFetchUser(token))
   }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(App));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

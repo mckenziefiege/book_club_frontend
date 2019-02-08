@@ -2,46 +2,42 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import CurrentlyReading from './CurrentlyReading.js'
 import UserLinks from './UserLinks.js'
+import { changeCreateEventForm } from '../Redux/actions.js'
 
 class UserFeed extends Component {
 
-  state ={
-    formClicked: false
-  }
-
-    submitNewEvent = (e) => {
-      e.preventDefault()
-      let options = {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}`},
-        body: JSON.stringify({
-          name: e.target.name.value,
-          address: e.target.address.value,
-          city: e.target.city.value,
-          state: e.target.state.value,
-          zipcode: e.target.zipcode.value,
-          date: e.target.date.value,
-          time: e.target.time.value,
-          description: e.target.description.value,
-          host_id: this.props.user.id
-        })
-      }
-      fetch('http://localhost:3000/events', options)
-      .then(resp => resp.json())
-      .then(resp => fetch('http://localhost:3000/user_events', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}`},
-        body: JSON.stringify({
-          user_id: this.props.user.id,
-          event_id: resp.id
-        })
-      }))
+  submitNewEvent = (e) => {
+    e.preventDefault()
+    let options = {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}`},
+      body: JSON.stringify({
+        name: e.target.name.value,
+        address: e.target.address.value,
+        city: e.target.city.value,
+        state: e.target.state.value,
+        zipcode: e.target.zipcode.value,
+        date: e.target.date.value,
+        time: e.target.time.value,
+        description: e.target.description.value,
+        host_id: this.props.user.id
+      })
     }
 
-    changeFormClicked = () => {
-      this.setState({
-        formClicked: !this.state.formClicked
+    fetch('http://localhost:3000/events', options)
+    .then(resp => resp.json())
+    .then(resp => fetch('http://localhost:3000/user_events', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}`},
+      body: JSON.stringify({
+        user_id: this.props.user.id,
+        event_id: resp.id
       })
+    }))
+  }
+
+    changeFormClicked = () => {
+      this.props.changeCreateEventForm()
     }
 
     renderForm() {
@@ -70,7 +66,7 @@ class UserFeed extends Component {
           <h2 className="secondary-header feed-headings">Currently Reading</h2>
           <CurrentlyReading />
           <h2 className="form-option secondary-header feed-headings" onClick={this.changeFormClicked}>&rarr; Create New Book Club</h2>
-          {this.state.formClicked ? this.renderForm() : null}
+          {this.props.createEventForm && this.renderForm()}
         </div>
       </div>
     )
@@ -79,8 +75,15 @@ class UserFeed extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.auth.user
+    user: state.auth.user,
+    createEventForm: state.createEventForm
   }
 }
 
-export default connect(mapStateToProps)(UserFeed)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changeCreateEventForm: () => dispatch(changeCreateEventForm())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserFeed)
