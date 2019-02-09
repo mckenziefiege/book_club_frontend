@@ -4,6 +4,7 @@ import UserLinks from './UserLinks.js'
 import CommentsContainer from './CommentsContainer.js'
 
 const EventPage = (props) => {
+  console.log(props)
   let usernames = props.club.users && props.club.users.map(user => <p key={user.id}> {user.first_name} {user.last_name} </p>)
   return (
     <div>

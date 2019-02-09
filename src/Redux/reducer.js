@@ -9,7 +9,8 @@ const initialState = {
   createEventForm: false,
   bookObjs: [],
   fetchedBooks: [],
-  bookClubs: []
+  bookClubs: [],
+  comments: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -56,32 +57,32 @@ const reducer = (state = initialState, action) => {
       }
     }
   }
-  case('FETCHED_BOOKS_FROM_API'): {
-    return { ...state,
-      fetchedBooks: action.payload
+    case('FETCHED_BOOKS_FROM_API'): {
+      return { ...state,
+        fetchedBooks: action.payload
+      }
     }
-  }
-  case('FETCH_BOOK_CLUBS'): {
-    return { ...state,
-      bookClubs: action.payload
+    case('FETCH_BOOK_CLUBS'): {
+      return { ...state,
+        bookClubs: action.payload
+      }
     }
-  }
-
-
-
-
     case('CHANGE_EVENT'): {
-      return {...state, club: action.payload.club}
+      return {...state,
+        club: action.payload.club
+      }
     }
+    case('UPDATE_COMMENTS'): {
+      return {...state,
+         comments: action.payload
+       }
+    }
+
+
 
     case('UPDATE_USER'): {
       return {...state, auth: {currentUser: action.payload}}
     }
-
-    case('UPDATE_USER_FROM_JOIN'): {
-      return {...state, auth: action.payload}
-    }
-
     case('UPDATE_USER_FROM_FAVORITE'): {
       return {...state, auth: action.payload, books: {read: action.payload.read, want_to_read: action.payload.want_to_read, currently_reading: action.payload.currently_reading}}
     }

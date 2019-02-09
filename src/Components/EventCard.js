@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { changeEvent, updateUser, updateUserFromJoin } from '../Redux/actions.js'
+import { changeEvent, updateUserFromFetch, updateUserFromJoin } from '../Redux/actions.js'
 
 class EventCard extends Component {
 
@@ -9,30 +9,35 @@ class EventCard extends Component {
     fetch('http://localhost:3000/user_events', {
       method: "POST",
       headers: {
-           "Content-Type": "application/json"
-        },
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({
         user_id: this.props.user.id,
         event_id: obj.id
       })
-    }).then(resp => resp.json())
-    .then(resp => this.props.updateUserFromJoin(resp.user))
+    })
+    .then(resp => resp.json())
+    .then(resp => this.props.updateUserFromFetch(resp.user))
   }
 
   leaveEvent = (e, obj) => {
     let user_event = obj.user_events.filter(user_event => user_event.user_id === this.props.user.id)
-    let id = user_event.length === 0 ? null : user_event[0].id
-    fetch(`http://localhost:3000/user_events/${id}`, {
-      method: "DELETE",
-      headers: {
-           "Content-Type": "application/json"
-        }
-    })
-    .then(resp => resp.json())
-    .then(resp => this.props.updateUser(resp))
+    if (user_event.length !== 0) {
+        let id = user_event[0].id
+        console.log(id)
+        fetch(`http://localhost:3000/user_events/${id}`, {
+          method: "DELETE",
+          headers: {
+               "Content-Type": "application/json"
+            }
+        })
+        .then(resp => resp.json())
+        .then(resp => this.props.updateUserFromFetch(resp))
+    }
   }
 
   render() {
+    console.log(this.props.clubObj)
     let ids = this.props.user.user_events === undefined ? null : this.props.user.user_events.map(user_event => user_event.event_id)
     return (
     <div className="searcheventcard">
@@ -54,9 +59,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    changeEvent: (resp) => dispatch(changeEvent(resp)),
-    updateUser: (resp) => dispatch(updateUser(resp)),
-    updateUserFromJoin: (resp) => dispatch(updateUserFromJoin(resp))
+    changeEvent: (club) => dispatch(changeEvent(club)),
+    updateUserFromFetch: (user) => dispatch(updateUserFromFetch(user))
   }
 }
 

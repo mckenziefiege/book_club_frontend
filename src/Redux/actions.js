@@ -6,6 +6,7 @@ export const updateBookObjs = (books) => ({type: 'UPDATE_BOOK_OBJS', payload: bo
 export const updateUserFromFetch = (user) => ({type: 'UPDATE_USER_FROM_FETCH', payload: user})
 export const fetchedBookFromApi = (books) => ({type: 'FETCHED_BOOKS_FROM_API', payload: books})
 export const fetchBookClubs = (clubs) => ({type: 'FETCH_BOOK_CLUBS', payload: clubs})
+export const updateComments = (comments) => ({type: 'UPDATE_COMMENTS', payload: comments})
 
 
 
