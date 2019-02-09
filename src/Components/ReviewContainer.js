@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import ReviewCard from './ReviewCard.js'
 import UserLinks from './UserLinks.js'
 import SearchReviews from './SearchReviews.js'
+import { updateReviews } from '../Redux/actions.js'
 
 class ReviewContainer extends Component {
-  state = {
-    reviews: []
-  }
 
   searchHandler = (search) => {
     fetch('http://localhost:3000/reviews')
     .then(resp => resp.json())
     .then(reviews => {
-      let new_reviews = reviews.filter(review => review.book.title.toLowerCase().includes(search.toLowerCase()))
-      return this.setState({
-        reviews: new_reviews
-      })
+      let reviews_new = reviews.filter(review => review.book.title.toLowerCase().includes(search.toLowerCase()))
+
+      this.props.updateReviews(reviews_new)
     })
   }
 
   render() {
-    let reviewCards = this.state.reviews.map(review => <ReviewCard key={review.id} reviewObj={review} />)
+    let reviewCards = this.props.reviews.map(review => <ReviewCard key={review.id} reviewObj={review} />)
     return (
     <div>
       <UserLinks />
@@ -31,4 +29,16 @@ class ReviewContainer extends Component {
   }
 }
 
-export default ReviewContainer
+const mapStateToProps = (state) => {
+  return {
+    reviews: state.reviews
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateReviews: (reviews) => dispatch(updateReviews(reviews)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ReviewContainer)

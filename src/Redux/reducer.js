@@ -10,7 +10,8 @@ const initialState = {
   bookObjs: [],
   fetchedBooks: [],
   bookClubs: [],
-  comments: []
+  comments: [],
+  reviews: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -75,6 +76,11 @@ const reducer = (state = initialState, action) => {
     case('UPDATE_COMMENTS'): {
       return {...state,
          comments: action.payload
+       }
+    }
+    case('UPDATE_REVIEWS'): {
+      return {...state,
+         reviews: action.payload
        }
     }
 
