@@ -42,7 +42,7 @@ class CurrentlyReading extends Component {
 const mapStateToProps = (state) => {
   return {
     user: state.auth.user,
-    currently_reading: state.books.currently_reading,
+    currently_reading: state.books.currentlyReading,
     bookObjs: state.bookObjs
   }
 }

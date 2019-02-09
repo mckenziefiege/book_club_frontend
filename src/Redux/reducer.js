@@ -7,8 +7,9 @@ const initialState = {
   },
   club: {},
   createEventForm: false,
-  searchTerm: "",
-  bookObjs: []
+  bookObjs: [],
+  fetchedBooks: [],
+  bookClubs: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -16,7 +17,7 @@ const reducer = (state = initialState, action) => {
     case('HANDLE_LOGIN'): {
       return {...state, auth: action.payload,
         books: {read: action.payload.user.read,
-        want_to_read: action.payload.user.want_to_read,
+        wantToRead: action.payload.user.want_to_read,
         currently_reading: action.payload.user.currently_reading}
       }
     }
@@ -24,8 +25,8 @@ const reducer = (state = initialState, action) => {
       return {...state, auth: {},
         books: {
           read: {},
-          want_to_read: {},
-          currently_reading: {}
+          wantToRead: {},
+          currentlyReading: {}
           }
         }
       }
@@ -33,8 +34,8 @@ const reducer = (state = initialState, action) => {
       return {...state, auth: action.payload,
          books: {
            read: action.payload.user.read,
-           want_to_read: action.payload.user.want_to_read,
-           currently_reading: action.payload.user.currently_reading
+           wantToRead: action.payload.user.want_to_read,
+           currentlyReading: action.payload.user.currently_reading
           }
         }
       }
@@ -43,13 +44,7 @@ const reducer = (state = initialState, action) => {
         createEventForm: !state.createEventForm
       }
     }
-    case('CHANGE_SEARCH_TERM'): {
-      return { ...state,
-        searchTerm: action.payload
-      }
-    }
     case('UPDATE_BOOK_OBJS'): {
-      console.log('hellllllo')
       return { ...state,
         bookObjs: action.payload
       }
@@ -61,18 +56,19 @@ const reducer = (state = initialState, action) => {
       }
     }
   }
-
-
-
-
-
-    case('UPDATE_CURRENTLY_READING'): {
-      return {...state, currently_reading: action.payload}
+  case('FETCHED_BOOKS_FROM_API'): {
+    return { ...state,
+      fetchedBooks: action.payload
     }
-
-    case('ADD_BOOK_TO_WANT_TO_READ'): {
-      return {...state, want_to_read: [...state.books.want_to_read, action.payload]}
+  }
+  case('FETCH_BOOK_CLUBS'): {
+    return { ...state,
+      bookClubs: action.payload
     }
+  }
+
+
+
 
     case('CHANGE_EVENT'): {
       return {...state, club: action.payload.club}
