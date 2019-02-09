@@ -26,6 +26,18 @@ This app exists to give book lovers a place to keep track of what they've read o
 
 ## Screenshots
 
+February 2019 Styling Update: 
+
+<img width="1423" alt="screen shot 2019-02-09 at 6 36 29 pm" src="https://user-images.githubusercontent.com/38592156/52527615-b6ccbc00-2c99-11e9-9a35-ea3112946b60.png">
+<img width="1428" alt="screen shot 2019-02-09 at 6 25 56 pm" src="https://user-images.githubusercontent.com/38592156/52527609-b2080800-2c99-11e9-975f-46a84a74f569.png">
+<img width="1434" alt="screen shot 2019-02-09 at 6 26 30 pm" src="https://user-images.githubusercontent.com/38592156/52527610-b3393500-2c99-11e9-98bc-5a4befae2d97.png">
+<img width="1431" alt="screen shot 2019-02-09 at 6 26 51 pm" src="https://user-images.githubusercontent.com/38592156/52527612-b46a6200-2c99-11e9-81ac-f917d3daf5bc.png">
+<img width="1433" alt="screen shot 2019-02-09 at 6 35 27 pm" src="https://user-images.githubusercontent.com/38592156/52527613-b59b8f00-2c99-11e9-9d3e-087405803dcc.png">
+<img width="1418" alt="screen shot 2019-02-09 at 6 36 03 pm" src="https://user-images.githubusercontent.com/38592156/52527614-b6342580-2c99-11e9-9d15-1dfa9a4ffc78.png">
+
+
+December 2018:
+
 <img width="1433" alt="screen shot 2018-12-12 at 5 43 13 pm" src="https://user-images.githubusercontent.com/38592156/49903782-4854b480-fe36-11e8-87c7-08d1befc9b04.png">
 <img width="1433" alt="screen shot 2018-12-12 at 5 43 45 pm" src="https://user-images.githubusercontent.com/38592156/49903853-75a16280-fe36-11e8-8cfa-56b85695a3f5.png">
 <img width="1431" alt="screen shot 2018-12-12 at 5 44 48 pm" src="https://user-images.githubusercontent.com/38592156/49903854-776b2600-fe36-11e8-9985-812c5ef08f8b.png">
