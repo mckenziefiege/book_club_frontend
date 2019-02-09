@@ -26,7 +26,7 @@ class NavBar extends Component {
     return (
       <div className="navBar">
         <ul>
-          <Link to='/'><h1 className="logo">Novel Finds <i className="fas fa-book-open"></i></h1></Link>
+          <Link to='/'><h1 className="logo">Novel Finds <img className="book-icon" height="35" src="https://img.icons8.com/ios/50/000000/literature.png"/></h1></Link>
           {this.props.user && this.renderProfileImage()}
           {this.props.user ? this.renderLogoutButton() : this.renderLoginButton()}
           {!this.props.user && this.renderSignUpButton()}

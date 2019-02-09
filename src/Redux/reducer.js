@@ -83,15 +83,6 @@ const reducer = (state = initialState, action) => {
          reviews: action.payload
        }
     }
-
-
-
-    case('UPDATE_USER'): {
-      return {...state, auth: {currentUser: action.payload}}
-    }
-    case('UPDATE_USER_FROM_FAVORITE'): {
-      return {...state, auth: action.payload, books: {read: action.payload.read, want_to_read: action.payload.want_to_read, currently_reading: action.payload.currently_reading}}
-    }
     default:
       return state
   }

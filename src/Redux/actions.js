@@ -10,15 +10,6 @@ export const updateComments = (comments) => ({type: 'UPDATE_COMMENTS', payload: 
 export const updateReviews = (reviews) => ({type: 'UPDATE_REVIEWS', payload: reviews})
 export const changeEvent = (club) => ({type: 'CHANGE_EVENT', payload: {club}})
 
-
-
-
-export const updateUser = (user) => ({type: 'UPDATE_USER', payload: {user}})
-
-export const updateUserFromJoin = (user) => ({type: 'UPDATE_USER_FROM_JOIN', payload: {user}})
-
-export const updateUserFromFavorite = (user) => ({type: 'UPDATE_USER_FROM_FAVORITE', payload: {user}})
-
 export const loginAndFetch = (e) => {
   return (dispatch) => {
     return loginFetch(e)
