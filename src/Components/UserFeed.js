@@ -23,7 +23,6 @@ class UserFeed extends Component {
         host_id: this.props.user.id
       })
     }
-
     fetch('http://localhost:3000/events', options)
     .then(resp => resp.json())
     .then(resp => fetch('http://localhost:3000/user_events', {
@@ -34,6 +33,7 @@ class UserFeed extends Component {
         event_id: resp.id
       })
     }))
+    this.formRef.reset()
   }
 
     changeFormClicked = () => {
@@ -42,7 +42,7 @@ class UserFeed extends Component {
 
     renderForm() {
       return (
-      <form className="eventForm" onSubmit={(e) => this.submitNewEvent(e)}>
+      <form ref={(el) => this.formRef = el} className="eventForm" onSubmit={(e) => this.submitNewEvent(e)}>
         <input placeholder="Name of Book Club" className="eventFormInput" type="text" name="name"/><br />
         <input placeholder="Address"className="eventFormInput" type="text" name="address"/><br />
         <input placeholder="City"className="eventFormInput"type="text" name="city"/><br />

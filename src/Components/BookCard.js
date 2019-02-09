@@ -31,8 +31,7 @@ class BookCard extends Component {
           this.props.updateUserFromFetch(resp.user)
           const ids = resp.user.want_to_read.map(user_book => user_book.book_id)
           let books = resp.user.books.filter(book => ids.includes(book.id))
-          let updated = [...books]
-          this.props.updateBooks(updated)
+          this.props.updateBooks(books)
         }
       )
     }
@@ -53,7 +52,6 @@ class BookCard extends Component {
 const mapStateToProps = (state) => {
   return {
     user: state.auth.user,
-    wantToRead: state.books.wantToRead,
     bookObjs: state.bookObjs
   }
 }

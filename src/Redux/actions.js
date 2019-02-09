@@ -7,11 +7,11 @@ export const updateUserFromFetch = (user) => ({type: 'UPDATE_USER_FROM_FETCH', p
 export const fetchedBookFromApi = (books) => ({type: 'FETCHED_BOOKS_FROM_API', payload: books})
 export const fetchBookClubs = (clubs) => ({type: 'FETCH_BOOK_CLUBS', payload: clubs})
 export const updateComments = (comments) => ({type: 'UPDATE_COMMENTS', payload: comments})
-
-
-
-
+export const updateReviews = (reviews) => ({type: 'UPDATE_REVIEWS', payload: reviews})
 export const changeEvent = (club) => ({type: 'CHANGE_EVENT', payload: {club}})
+
+
+
 
 export const updateUser = (user) => ({type: 'UPDATE_USER', payload: {user}})
 
