@@ -38,10 +38,10 @@ class UserBookCard extends Component {
         rating: e.target.rating.value,
         book_id: e.target.bookid.value,
         user_id: e.target.userid.value
-    })
+      })
+    }
+    fetch('http://localhost:3000/reviews', options)
   }
-  fetch('http://localhost:3000/reviews', options)
-}
 
   handleChangeCategory = (e, book) => {
     e.preventDefault()
@@ -133,9 +133,6 @@ class UserBookCard extends Component {
 const mapStateToProps = (state) => {
   return {
     user: state.auth.user,
-    read: state.books.read,
-    want_to_read: state.books.want_to_read,
-    currently_reading: state.books.currently_reading,
   }
 }
 
