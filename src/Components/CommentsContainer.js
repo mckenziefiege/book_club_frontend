@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import CommentCard from './CommentCard.js'
+import { updateComments } from '../Redux/actions.js'
 
 class CommentsContainer extends Component {
-  state = {
-    comments: []
-  }
+
+  componentDidMount() {
+    fetch(`http://localhost:3000/events/${this.props.club.id}`)
+      .then(resp => resp.json())
+      .then(resp => {
+        let reversed = resp.comments && resp.comments.reverse()
+        this.props.updateComments(reversed)
+        }
+      )
+    }
 
   postComment = (e) => {
     e.preventDefault()
@@ -17,22 +25,17 @@ class CommentsContainer extends Component {
         user_id: this.props.user.id,
         event_id: this.props.club.id
       })
-    }).then(resp => resp.json())
-    .then(resp => this.setState({
-      comments: [resp, ...this.state.comments]
-    }))
-  }
-
-  componentDidMount() {
-    fetch(`http://localhost:3000/events/${this.props.club.id}`)
-      .then(resp => resp.json())
-      .then(resp => this.setState({
-        comments: resp.comments
-      }))
+    })
+    .then(resp => resp.json())
+    .then(resp => {
+      let copy = [resp, ...this.props.comments]
+      this.props.updateComments(copy)
+    })
   }
 
   render() {
-    let commentCards = this.state.comments ? this.state.comments.map(comment => <CommentCard commentObj={comment} key={comment.id}/>) : null
+    console.log(this.props)
+    let commentCards = this.props.comments ? this.props.comments.map(comment => <CommentCard commentObj={comment} key={comment.id}/>) : null
     return (
       <div className="commentContainer">
         <form onSubmit={this.postComment}>
@@ -48,8 +51,15 @@ class CommentsContainer extends Component {
 const mapStateToProps = (state) => {
   return {
     user: state.auth.user,
-    club: state.club
+    club: state.club,
+    comments: state.comments
   }
 }
 
-export default connect(mapStateToProps)(CommentsContainer)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateComments: (comments) => dispatch(updateComments(comments)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CommentsContainer)
