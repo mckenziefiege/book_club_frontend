@@ -5,19 +5,18 @@ import UserLinks from './UserLinks.js'
 import { updateBookObjs, updateUserFromFetch } from '../Redux/actions.js'
 
 class UserWantToRead extends Component {
-
   componentDidMount () {
     this.getIdsFromUser()
   }
 
   getIdsFromUser = () => {
-    const ids = this.props.user && this.props.want_to_read.map(user_book => user_book.book_id)
+    const ids = this.props.user && this.props.wantToRead.map(user_book => user_book.book_id)
     let bookObjs = this.props.user && this.props.user.books.filter(book => ids.includes(book.id))
     this.props.updateBooks(bookObjs)
   }
 
   deleteBook = (obj) => {
-    let choosen_user_book = this.props.want_to_read.filter(user_book => user_book.book_id === obj.id)
+    let choosen_user_book = this.props.wantToRead.filter(user_book => user_book.book_id === obj.id)
     let id = choosen_user_book[0].id
       fetch(`http://localhost:3000/user_books/${id}`, {
         method: "DELETE"})
@@ -73,7 +72,7 @@ class UserWantToRead extends Component {
   const mapStateToProps = (state) => {
     return {
       user: state.auth.user,
-      want_to_read: state.books.want_to_read,
+      wantToRead: state.books.wantToRead,
       bookObjs: state.bookObjs
     }
   }

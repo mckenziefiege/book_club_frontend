@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { updateUser } from '../Redux/actions.js'
+import { updateUserFromFetch, updateBookObjs } from '../Redux/actions.js'
 
 class BookCard extends Component {
 
@@ -13,21 +13,29 @@ class BookCard extends Component {
         author: this.props.bookObj.volumeInfo.authors[0],
         description: this.props.bookObj.volumeInfo.description,
         image:  this.props.bookObj.volumeInfo.imageLinks.thumbnail,
-    })
-  }
-    fetch('http://localhost:3000/books', options)
-    .then(resp => resp.json())
-    .then(book => fetch('http://localhost:3000/user_books', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}`},
-      body: JSON.stringify({
-        status: "want to read",
-        book_id: book.id,
-        user_id: this.props.user.id,
       })
-    })).then(resp => resp.json())
-    .then(resp => this.props.updateUser(resp.user))
-  }
+    }
+      fetch('http://localhost:3000/books', options)
+      .then(resp => resp.json())
+      .then(book => fetch('http://localhost:3000/user_books', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}`},
+        body: JSON.stringify({
+          status: "want to read",
+          book_id: book.id,
+          user_id: this.props.user.id,
+        })
+      }))
+        .then(resp => resp.json())
+        .then(resp => {
+          this.props.updateUserFromFetch(resp.user)
+          const ids = resp.user.want_to_read.map(user_book => user_book.book_id)
+          let books = resp.user.books.filter(book => ids.includes(book.id))
+          let updated = [...books]
+          this.props.updateBooks(updated)
+        }
+      )
+    }
 
   render() {
     return (
@@ -43,12 +51,17 @@ class BookCard extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {user: state.auth.user}
+  return {
+    user: state.auth.user,
+    wantToRead: state.books.wantToRead,
+    bookObjs: state.bookObjs
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateUser: (resp) => dispatch(updateUser(resp))
+    updateUserFromFetch: (user) => dispatch(updateUserFromFetch(user)),
+    updateBooks: (books) => dispatch(updateBookObjs(books))
   }
 }
 

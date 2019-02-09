@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import UserLinks from './UserLinks.js'
 import SearchEvents from './SearchEvents.js'
 import EventCard from './EventCard.js'
+import { fetchBookClubs } from '../Redux/actions.js'
+
 
 class EventsContainer extends Component {
-  state = {
-    events: []
-  }
 
   searchHandler = (search) => {
     fetch('http://localhost:3000/events')
     .then(resp => resp.json())
     .then(clubs => {
       let new_clubs = clubs.filter(club => club.zipcode === search)
-      this.setState({
-        events: new_clubs
-      })
+      this.props.fetchBookClubs(new_clubs)
     })
   }
 
   render() {
-    let clubCards = this.state.events.map(club => <EventCard clubObj={club} key={club.id}/>)
+    let clubCards = this.props.bookClubs.map(club => <EventCard clubObj={club} key={club.id}/>)
     return (
       <div>
         <UserLinks />
@@ -31,4 +29,16 @@ class EventsContainer extends Component {
   }
 }
 
-export default EventsContainer
+const mapStateToProps = (state) => {
+  return {
+    bookClubs: state.bookClubs
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchBookClubs: (clubs) => dispatch(fetchBookClubs(clubs)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventsContainer)
