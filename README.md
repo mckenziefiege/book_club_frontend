@@ -1,6 +1,6 @@
 # Novel Finds Frontend
 
-Novel Finds is an app designed to keep track of what you're reading and to join book clubs in you're area.
+Novel Finds is an app designed to keep track of what you're reading and to join book clubs in your area.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
