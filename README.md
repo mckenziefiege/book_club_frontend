@@ -28,6 +28,16 @@ This app exists to give book lovers a place to keep track of what they've read o
 
 February 2019 Styling Update: 
 
+
+
+![Novel Finds 6](https://user-images.githubusercontent.com/38592156/59161258-56665380-8aae-11e9-9dba-f1d5b340859c.png)
+![Novel Finds 2](https://user-images.githubusercontent.com/38592156/59161259-58301700-8aae-11e9-944f-b165f302fbcf.png)
+![Novel Finds 4](https://user-images.githubusercontent.com/38592156/59161260-59614400-8aae-11e9-98a6-352ddf7572be.png)
+![Novel Finds 3](https://user-images.githubusercontent.com/38592156/59161261-5a927100-8aae-11e9-912d-6c0c5806b301.png)
+![Novel Finds 1](https://user-images.githubusercontent.com/38592156/59161262-5bc39e00-8aae-11e9-848e-0f21dbf38e74.png)
+
+
+
 <img width="1423" alt="screen shot 2019-02-09 at 6 36 29 pm" src="https://user-images.githubusercontent.com/38592156/52527615-b6ccbc00-2c99-11e9-9a35-ea3112946b60.png">
 <img width="1428" alt="screen shot 2019-02-09 at 6 25 56 pm" src="https://user-images.githubusercontent.com/38592156/52527609-b2080800-2c99-11e9-975f-46a84a74f569.png">
 <img width="1434" alt="screen shot 2019-02-09 at 6 26 30 pm" src="https://user-images.githubusercontent.com/38592156/52527610-b3393500-2c99-11e9-98bc-5a4befae2d97.png">
